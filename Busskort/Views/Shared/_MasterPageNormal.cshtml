@@ -2,6 +2,10 @@
 
 <html>
 <head>
+    <script src="~/Scripts/popper.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+
     <meta name="viewport" content="width=device-width" />
     <title><!--@ViewBag.Title-->Ansökan om busskort</title>
 </head>
@@ -9,54 +13,5 @@
     <div>
         @RenderBody()
     </div>
-
-    <!--Formulär för ansökan (lär väl fixa någon post senare, typ form action)-->
-    <div style="text-align: center">
-        <form>
-            <h1>Skola</h1><br />
-            Årskurs:<br />
-            <input type="text" name="skola" /> <br /><!--Kanse göra en rullgardin här-->
-            Skola: <br />
-            <input type="text" /><br />
-
-            <h1>Barn</h1><br />
-            Personnummer: <br />
-            <input type="text" name="barn_Personnummer" /><br />
-            Förnamn: <br />
-            <input type="text" name="barn_Förnamn" /><br />
-            Efternamn: <br />
-            <input type="text" name="barn_Efternamn" /><br />
-
-            <h1>Målsman</h1><br />
-            Förnamn: <br />
-            <input type="text" name="målsman_Förnamn" /><br />
-            Efternamn: <br />
-            <input type="text" name="målsman_efternamn" /><br />
-            Personnummer: <br />
-            <input type="text" name="målsman_Personnummer" /><br />
-
-            <h1>Kontakt</h1><br />
-            E-post <br />
-            <input type="text" name="epost" /><br />
-            Telefon <br />
-            <input type="text" name="telefon" /><br />
-
-            <h1>Adress</h1><br />
-            Adress: <br />
-            <input type="text" name="adress" /><br />
-            Postnummer: <br />
-            <input type="text" name="postnummer" /><br />
-            Ort: <br />
-            <input type="text" name="ort" /><br />
-
-            <br />
-
-            <input type="button" name="skicka_knapp" value="Skicka" />
-
-        </form>
-
-    </div>
-
-
 </body>
 </html>
