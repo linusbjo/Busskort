@@ -103,7 +103,8 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <None Include="packages.config" />
-    <Content Include="Views\_MasterPageNormal.cshtml" />
+    <Content Include="Views\Shared\_MasterPageNormal.cshtml" />
+    <Content Include="Views\Shared\_MasterPageAdmin.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
