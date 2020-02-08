@@ -1,0 +1,15 @@
+﻿@model Busskort.Models.BusskortViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MasterPageNormal.cshtml";
+}
+
+
+@foreach (var item in Model.AnmälanList)
+{
+    @item.ID
+}
+
+<h2>Index</h2>
+
