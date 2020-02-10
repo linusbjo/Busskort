@@ -24,5 +24,8 @@ namespace BusskortService
 
         [OperationContract]
         void UpdateAnmälan(AnmälanInput anmälanInput);
+
+        [OperationContract]
+        void CreateAnmälan(AnmälanInput anmälanInput);
     }
 }
