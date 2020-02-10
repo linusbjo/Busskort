@@ -25,5 +25,28 @@ namespace BusskortService
 
             return db.Anmälan.Find(id);
         }
+
+        public void DeleteAnmälan(int id)
+        {
+            AnmalanEntityDataModel db = new AnmalanEntityDataModel();
+
+            db.Anmälan.Remove(db.Anmälan.Find(id)); // Remove by id
+            db.SaveChanges();
+        }
+
+        public void UpdateAnmälan(AnmälanInput anmälanInput)
+        {
+            Anmälan UpdateAnmälan = new Anmälan();
+            AnmalanEntityDataModel db = new AnmalanEntityDataModel();
+
+            UpdateAnmälan = db.Anmälan.Find(anmälanInput.ID); // Find by id
+
+            UpdateAnmälan.barnPersonnummer = anmälanInput.barnPersonnummer;
+            // TODO: Fortsätt...
+
+
+            db.SaveChanges();
+          
+        }
     }
 }
