@@ -8,7 +8,6 @@ namespace BusskortService
 
     public partial class Anmälan
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
 
         public int Årskurs { get; set; }
@@ -51,5 +50,7 @@ namespace BusskortService
         [Required]
         [StringLength(50)]
         public string Ort { get; set; }
+
+        public bool? Beviljad { get; set; }
     }
 }

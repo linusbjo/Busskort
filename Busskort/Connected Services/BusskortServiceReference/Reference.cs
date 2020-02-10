@@ -26,6 +26,9 @@ namespace Busskort.BusskortServiceReference {
         private string AdressField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> BeviljadField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string E_postField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -80,6 +83,19 @@ namespace Busskort.BusskortServiceReference {
                 if ((object.ReferenceEquals(this.AdressField, value) != true)) {
                     this.AdressField = value;
                     this.RaisePropertyChanged("Adress");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> Beviljad {
+            get {
+                return this.BeviljadField;
+            }
+            set {
+                if ((this.BeviljadField.Equals(value) != true)) {
+                    this.BeviljadField = value;
+                    this.RaisePropertyChanged("Beviljad");
                 }
             }
         }

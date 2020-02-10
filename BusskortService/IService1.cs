@@ -18,5 +18,14 @@ namespace BusskortService
 
         [OperationContract]
         Anmälan GetAnmälan(int id);
+
+        [OperationContract]
+        void DeleteAnmälan(int id);
+
+        [OperationContract]
+        void UpdateAnmälan(AnmälanInput anmälanInput);
+
+        [OperationContract]
+        void CreateAnmälan(AnmälanInput anmälanInput);
     }
 }

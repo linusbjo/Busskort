@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Busskort.Models
+namespace BusskortService
 {
-    public class Anmälan
+    public class AnmälanInput
     {
         public int ID { get; set; }
 
