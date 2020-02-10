@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Busskort", "Busskort\Busskort.csproj", "{071EFBC3-EDD9-4EB4-8A97-22A4254CC602}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1681F3E1-B8D9-47CD-8B7B-85A2F294BA03} = {1681F3E1-B8D9-47CD-8B7B-85A2F294BA03}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusskortService", "BusskortService\BusskortService.csproj", "{1681F3E1-B8D9-47CD-8B7B-85A2F294BA03}"
 EndProject

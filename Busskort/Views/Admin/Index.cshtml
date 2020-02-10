@@ -1,0 +1,64 @@
+﻿@model Busskort.Models.BusskortViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MasterPageNormal.cshtml";
+}
+    <link href="~/Custom/Admin/Index.css" rel="stylesheet" />
+
+    <table class="table table-dark table-responsive-sm">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Skola</th>
+                <th scope="col">Årskurs</th>
+                <th scope="col">Personnummer. Barn</th>
+                <th scope="col">Barn. Förnamn</th>
+                <th scope="col">Barn. Efternamn</th>
+                <th scope="col">Vårdnads. Förnamn</th>
+                <th scope="col">Vårdnads. Efternamn</th>
+                <th scope="col">E-post</th>
+                <th scope="col">Telefon</th>
+                <th scope="col">Adress</th>
+                <th scope="col">Ort</th>
+                <th scope="col">Postnmr</th>
+                <th scope="col">Beviljad</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        @foreach (var item in Model.AnmälanList)
+        {
+        <tbody>
+            <tr>
+                <td>@item.ID</td>
+                <td>@item.Skola</td>
+                <td>@item.Årskurs</td>
+                <td>@item.barnPersonnummer</td>
+                <td>@item.barnFörnamn</td>
+                <td>@item.barnEfternamn</td>
+                <td>@item.Förnamn</td>
+                <td>@item.Efternamn</td>
+                <td>@item.E_post</td>
+                <td>@item.Telefon</td>
+                <td>@item.Adress</td>
+                <td>@item.Ort</td>
+                <td>@item.Postnummer</td>
+                <td>              
+                    @*@if (item.Beviljad == false)
+                    {
+                        <p>N/A</p>
+                    }*@
+                    @item.Beviljad
+                </td>
+                <td>
+                    <form action="/Business/Order" method="post">
+                        <button type="submit" formaction="/Business/Order/@item.ID" class="btn-info">Edit</button>
+                    </form>
+                </td>
+            </tr>         
+        </tbody>
+       }
+    
+    </table>
+
