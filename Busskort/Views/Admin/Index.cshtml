@@ -5,24 +5,26 @@
     Layout = "~/Views/Shared/_MasterPageNormal.cshtml";
 }
     <link href="~/Custom/Admin/Index.css" rel="stylesheet" />
+    <script src="~/Custom/Admin/Index.js"></script>
 
-    <table class="table table-dark table-responsive-sm">
+    <table class="table table-dark table-responsive-sm" id="displayDataTable">
         <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">Skola</th>
-                <th scope="col">Årskurs</th>
-                <th scope="col">Personnummer. Barn</th>
-                <th scope="col">Barn. Förnamn</th>
-                <th scope="col">Barn. Efternamn</th>
-                <th scope="col">Vårdnads. Förnamn</th>
-                <th scope="col">Vårdnads. Efternamn</th>
-                <th scope="col">E-post</th>
-                <th scope="col">Telefon</th>
-                <th scope="col">Adress</th>
-                <th scope="col">Ort</th>
-                <th scope="col">Postnmr</th>
-                <th scope="col">Beviljad</th>
+                <th scope="col" onclick="sortTable(0)">#</th>
+                <th scope="col" onclick="sortTable(1)">Skola</th>
+                <th scope="col" onclick="sortTable(2)">Årskurs</th>
+                <th scope="col" onclick="sortTable(3)">Personnummer. Barn</th>
+                <th scope="col" onclick="sortTable(4)">Barn. Förnamn</th>
+                <th scope="col" onclick="sortTable(5)">Barn. Efternamn</th>
+                <th scope="col" onclick="sortTable(6)">Vårdnads. Förnamn</th>
+                <th scope="col" onclick="sortTable(7)">Vårdnads. Efternamn</th>
+                <th scope="col" onclick="sortTable(8)">E-post</th>
+                <th scope="col" onclick="sortTable(9)">Telefon</th>
+                <th scope="col" onclick="sortTable(10)">Adress</th>
+                <th scope="col" onclick="sortTable(11)">Ort</th>
+                <th scope="col" onclick="sortTable(12)">Postnmr</th>
+                <th scope="col" onclick="sortTable(13)">Beviljad</th>
+                <th scope="col" onclick="sortTable(14)">Motivering</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -44,13 +46,8 @@
                 <td>@item.Adress</td>
                 <td>@item.Ort</td>
                 <td>@item.Postnummer</td>
-                <td>              
-                    @*@if (item.Beviljad == false)
-                    {
-                        <p>N/A</p>
-                    }*@
-                    @item.Beviljad
-                </td>
+                <td> @item.Beviljad</td>
+                <td>@item.Motivering</td>
                 <td>
                     <form action="/Business/Order" method="post">
                         <button type="submit" formaction="/Business/Order/@item.ID" class="btn-info">Edit</button>

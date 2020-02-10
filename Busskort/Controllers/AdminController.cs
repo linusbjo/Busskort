@@ -33,12 +33,10 @@ namespace Busskort.Controllers
                 tempAnmälan.Ort = item.Ort;
                 tempAnmälan.Årskurs = item.Årskurs;
                 tempAnmälan.Skola = item.Skola;
+                tempAnmälan.Beviljad = item.Beviljad;
+                tempAnmälan.Motivering = item.Motivering;
+                tempAnmälan.Telefon = item.Telefon;
 
-                if(item.Beviljad != null)
-                {
-                    tempAnmälan.Beviljad = Convert.ToBoolean(item.Beviljad);
-                }
-                
                 AnmälanList.Add(tempAnmälan);
             }
 

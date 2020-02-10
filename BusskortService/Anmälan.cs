@@ -51,6 +51,10 @@ namespace BusskortService
         [StringLength(50)]
         public string Ort { get; set; }
 
-        public bool? Beviljad { get; set; }
+        [StringLength(50)]
+        public string Beviljad { get; set; }
+
+        [StringLength(50)]
+        public string Motivering { get; set; }
     }
 }

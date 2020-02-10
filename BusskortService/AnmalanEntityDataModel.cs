@@ -47,6 +47,14 @@
             modelBuilder.Entity<Anmälan>()
                 .Property(e => e.Ort)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<Anmälan>()
+                .Property(e => e.Beviljad)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Anmälan>()
+                .Property(e => e.Motivering)
+                .IsUnicode(false);
         }
     }
 }

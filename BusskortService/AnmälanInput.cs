@@ -33,6 +33,8 @@ namespace BusskortService
 
         public string Ort { get; set; }
 
-        public bool Beviljad { get; set; }
+        public string Beviljad { get; set; }
+
+        public string Motivering { get; set; }
     }
 }
