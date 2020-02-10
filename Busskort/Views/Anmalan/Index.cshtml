@@ -4,51 +4,81 @@
     Layout = "~/Views/Shared/_MasterPageNormal.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Ansökan om busskort</h2>
 
 <!--Formulär för ansökan (lär väl fixa någon post senare, typ form action)-->
-<div style="text-align: center">
+
+<div class="container">
     <form>
-        <h1>Skola</h1><br />
-        Årskurs:<br />
-        <input type="text" name="skola" /> <br /><!--Kanse göra en rullgardin här-->
-        Skola: <br />
-        <input type="text" /><br />
+        <div class="form-row">
 
-        <h1>Barn</h1><br />
-        Personnummer: <br />
-        <input type="text" name="barn_Personnummer" /><br />
-        Förnamn: <br />
-        <input type="text" name="barn_Förnamn" /><br />
-        Efternamn: <br />
-        <input type="text" name="barn_Efternamn" /><br />
+            <div class="form-group col-md-6">
+                <h1>Skola</h1><br />
 
-        <h1>Målsman</h1><br />
-        Förnamn: <br />
-        <input type="text" name="målsman_Förnamn" /><br />
-        Efternamn: <br />
-        <input type="text" name="målsman_efternamn" /><br />
-        Personnummer: <br />
-        <input type="text" name="målsman_Personnummer" /><br />
+                <label for="exampleFormControlSelect1">Årskurs</label>
+                <select class="form-control" id="exampleFormControlSelect1">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                </select>
 
-        <h1>Kontakt</h1><br />
-        E-post <br />
-        <input type="text" name="epost" /><br />
-        Telefon <br />
-        <input type="text" name="telefon" /><br />
 
-        <h1>Adress</h1><br />
-        Adress: <br />
-        <input type="text" name="adress" /><br />
-        Postnummer: <br />
-        <input type="text" name="postnummer" /><br />
-        Ort: <br />
-        <input type="text" name="ort" /><br />
+                <label for="inputSkola">Skola</label>
+                <input type="text" class="form-control" id="inputSkola" placeholder="Skriv in skola">
+            </div>
 
+            <div class="form-group col-md-6">
+                <h1>Barn</h1><br />
+                <label for="inputB_Personnummer">Personnummer</label>
+                <input type="text" class="form-control" id="inputB_Personnummer" placeholder="ÅÅMMDD-XXXX">
+                <label for="inputB_fornamn">Förnamn</label>
+                <input type="text" class="form-control" id="inputB_fornamn" placeholder="Förnamn">
+                <label for="inputB_efternamn">Efternamn</label>
+                <input type="text" class="form-control" id="inputB_efternamn" placeholder="Efternamn">
+            </div>
+
+            <div class="form-group col-md-6">
+                <h1>Målsman</h1><br />
+                <label for="inputM_Personnummer">Personnummer</label>
+                <input type="text" class="form-control" id="inputF_Personnummer" placeholder="ÅÅMMDD-XXXX">
+                <label for="inputM_fornamn">Förnamn</label>
+                <input type="text" class="form-control" id="inputM_fornamn" placeholder="Förnamn">
+                <label for="inputM_efternamn">Efternamn</label>
+                <input type="text" class="form-control" id="inputM_efternamn" placeholder="Efternamn">
+            </div>
+
+            <div class="form-group col-md-6">
+                <h1>Kontakt</h1><br />
+
+                <label for="inputEmail">E-post</label>
+                <input type="email" class="form-control" id="inputEmail" placeholder="E-post">
+                <label for="inputTelefon">Telefon</label>
+                <input type="text" class="form-control" id="inputTelefon" placeholder="Telefonnummer">
+            </div>
+
+            <div class="form-group col-md-6">
+                <h1>Adress</h1><br />
+
+                <label for="inputAdress">Adress</label>
+                <input type="text" class="form-control" id="inputAdress" placeholder="Gatunamn t.ex. Mjölnaregatan 16">
+                <label for="inputPostnummer">Postnummer</label>
+                <input type="text" class="form-control" id="inputPostnummer" placeholder="Postnummer">
+                <label for="inputOrt">Postnummer</label>
+                <input type="text" class="form-control" id="inputOrt" placeholder="Ort">
+
+            </div>
+        </div>
         <br />
-
-        <input type="button" name="skicka_knapp" value="Skicka" />
-
+        <button type="submit" class="btn btn-primary">  Skicka  </button>
     </form>
 
 </div>
+
+
+
