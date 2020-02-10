@@ -9,6 +9,7 @@
   <xs:complexType name="Anmälan">
     <xs:sequence>
       <xs:element minOccurs="0" name="Adress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Beviljad" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="E_post" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Efternamn" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Förnamn" nillable="true" type="xs:string" />

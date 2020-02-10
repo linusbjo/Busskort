@@ -32,5 +32,7 @@ namespace Busskort.Models
         public int Postnummer { get; set; }
 
         public string Ort { get; set; }
+
+        public bool Beviljad { get; set; }
     }
 }
