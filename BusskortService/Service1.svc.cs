@@ -54,6 +54,7 @@ namespace BusskortService
             UpdateAnmälan.Beviljad = anmälanInput.Beviljad;
             UpdateAnmälan.Telefon = anmälanInput.Telefon;
             UpdateAnmälan.E_post = anmälanInput.E_post;
+            UpdateAnmälan.FörälderPersonnummer = anmälanInput.FörälderPersonnummer;
 
             db.SaveChanges();
 
@@ -76,6 +77,7 @@ namespace BusskortService
             NewAnmälan.Beviljad = anmälanInput.Beviljad;
             NewAnmälan.Telefon = anmälanInput.Telefon;
             NewAnmälan.E_post = anmälanInput.E_post;
+            NewAnmälan.FörälderPersonnummer = NewAnmälan.FörälderPersonnummer;
 
             db.Anmälan.Add(NewAnmälan);
 

@@ -18,6 +18,8 @@ namespace BusskortService
 
         public int barnPersonnummer { get; set; }
 
+        public int FörälderPersonnummer { get; set; }
+
         [Required]
         [StringLength(50)]
         public string Förnamn { get; set; }

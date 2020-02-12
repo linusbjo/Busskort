@@ -36,5 +36,7 @@ namespace Busskort.Models
         public string Beviljad { get; set; }
 
         public string Motivering { get; set; }
+
+        public int FörälderPersonnummer { get; set; }
     }
 }

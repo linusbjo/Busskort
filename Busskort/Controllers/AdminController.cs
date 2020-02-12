@@ -49,6 +49,7 @@ namespace Busskort.Controllers
             anmälan.Förnamn = tempAnmälan.Förnamn;
             anmälan.Efternamn = tempAnmälan.Efternamn;
             anmälan.barnPersonnummer = tempAnmälan.barnPersonnummer;
+            anmälan.FörälderPersonnummer = tempAnmälan.FörälderPersonnummer;
             anmälan.barnFörnamn = tempAnmälan.barnFörnamn;
             anmälan.barnEfternamn = tempAnmälan.barnEfternamn;
             anmälan.Adress = tempAnmälan.Adress;
@@ -87,6 +88,7 @@ namespace Busskort.Controllers
                 tempAnmälan.Beviljad = item.Beviljad;
                 tempAnmälan.Motivering = item.Motivering;
                 tempAnmälan.Telefon = item.Telefon;
+                tempAnmälan.FörälderPersonnummer = item.FörälderPersonnummer;
 
                 AnmälanList.Add(tempAnmälan);
             }

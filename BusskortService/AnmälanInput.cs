@@ -15,6 +15,8 @@ namespace BusskortService
 
         public int barnPersonnummer { get; set; }
 
+        public int FörälderPersonnummer { get; set; }
+
         public string Förnamn { get; set; }
 
         public string Efternamn { get; set; }

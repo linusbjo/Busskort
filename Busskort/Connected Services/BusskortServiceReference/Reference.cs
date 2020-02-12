@@ -38,6 +38,9 @@ namespace Busskort.BusskortServiceReference {
         private string FörnamnField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int FörälderPersonnummerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -138,6 +141,19 @@ namespace Busskort.BusskortServiceReference {
                 if ((object.ReferenceEquals(this.FörnamnField, value) != true)) {
                     this.FörnamnField = value;
                     this.RaisePropertyChanged("Förnamn");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int FörälderPersonnummer {
+            get {
+                return this.FörälderPersonnummerField;
+            }
+            set {
+                if ((this.FörälderPersonnummerField.Equals(value) != true)) {
+                    this.FörälderPersonnummerField = value;
+                    this.RaisePropertyChanged("FörälderPersonnummer");
                 }
             }
         }
