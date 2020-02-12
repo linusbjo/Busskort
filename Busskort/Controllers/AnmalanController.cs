@@ -13,5 +13,13 @@ namespace Busskort.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult Create(FormCollection collection)
+        {
+
+
+            return View();
+        }
     }
 }
