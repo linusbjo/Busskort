@@ -61,9 +61,16 @@ namespace BusskortService
         }
         public void CreateAnmälan(Anmälan anmälan)
         {
-            AnmalanEntityDataModel db = new AnmalanEntityDataModel();
-            db.Anmälan.Add(anmälan);
-            db.SaveChanges();
+            try
+            {
+                AnmalanEntityDataModel db = new AnmalanEntityDataModel();
+                db.Anmälan.Add(anmälan);
+                db.SaveChanges();
+            }
+            catch (Exception e)
+            {
+
+            }
 
         }
     }

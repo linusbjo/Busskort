@@ -41,7 +41,7 @@ namespace Busskort.Controllers
             // Adress
             newAnmälan.Adress = Convert.ToString(collection["Adress"]);
             newAnmälan.Postnummer = Convert.ToInt32(collection["Postnummer"]);
-            newAnmälan.Efternamn = Convert.ToString(collection["Ort"]);
+            newAnmälan.Ort = Convert.ToString(collection["Ort"]);
 
             BusskortServiceReference.Service1Client client = new BusskortServiceReference.Service1Client();
 
