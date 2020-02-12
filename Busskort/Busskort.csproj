@@ -110,6 +110,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Custom\Admin\Index.css" />
     <Content Include="Custom\Admin\Index.js" />
+    <Content Include="Custom\MailTemplate.txt" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />

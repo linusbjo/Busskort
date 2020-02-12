@@ -11,7 +11,7 @@
 
 <div>
 
-    <h3 style= "text-align:center; font-family: sans-serif">Ansökningsid: @Model.ID</h3>
+    <h3 style= "text-align:center; font-family: sans-serif">Ansöknings id: @Model.ID</h3>
 
 
     <div class="container">
@@ -53,31 +53,31 @@
                 <div class="form-group col-md-6">
                     <h3 style="font-family: sans-serif">Målsman</h3><br />
                     <label for="inputM_Personnummer"><b>Personnummer</b></label>
-                    <input type="text" class="form-control" value="@Model.FörälderPersonnummer" id="inputF_Personnummer" placeholder="ÅÅMMDD-XXXX">
+                    <input type="text" class="form-control" value="@Model.FörälderPersonnummer" id="inputF_Personnummer" placeholder="ÅÅMMDD-XXXX" name="FörälderPersonnummer">
                     <label for="inputM_fornamn"><b>Förnamn</b></label>
-                    <input type="text" class="form-control" value="@Model.Förnamn" id="inputM_fornamn" placeholder="Förnamn">
+                    <input type="text" class="form-control" value="@Model.Förnamn" id="inputM_fornamn" placeholder="Förnamn" name="Förnamn">
                     <label for="inputM_efternamn"><b>Efternamn</b></label>
-                    <input type="text" class="form-control" value="@Model.Efternamn" id="inputM_efternamn" placeholder="Efternamn">
+                    <input type="text" class="form-control" value="@Model.Efternamn" id="inputM_efternamn" placeholder="Efternamn" name="Efternamn">
                 </div>
 
                 <div class="form-group col-md-6">
                     <h3 style="font-family: sans-serif">Kontakt</h3><br />
 
                     <label for="inputEmail"><b>E-post</b></label>
-                    <input type="email" class="form-control" value="@Model.E_post" id="inputEmail" placeholder="E-post">
+                    <input type="email" class="form-control" value="@Model.E_post" id="inputEmail" placeholder="E-post" name="E_post">
                     <label for="inputTelefon"><b>Telefon</b></label>
-                    <input type="text" class="form-control" value="@Model.Telefon"  id="inputTelefon" placeholder="Telefonnummer">
+                    <input type="text" class="form-control" value="@Model.Telefon"  id="inputTelefon" placeholder="Telefonnummer" name="inputTelefon">
                 </div>
 
                 <div class="form-group col-md-6">
                     <h3 style="font-family: sans-serif">Adress</h3><br />
 
                     <label for="inputAdress"><b>Adress</b></label>
-                    <input type="text" class="form-control" value="@Model.Adress" id="inputAdress" placeholder="Gatunamn t.ex. Mjölnaregatan 16">
+                    <input type="text" class="form-control" value="@Model.Adress" id="inputAdress" placeholder="Gatunamn t.ex. Mjölnaregatan 16" name="Adress">
                     <label for="inputPostnummer"><b>Postnummer</b></label>
-                    <input type="text" class="form-control" value="@Model.Postnummer" id="inputPostnummer" placeholder="Postnummer">
+                    <input type="text" class="form-control" value="@Model.Postnummer" id="inputPostnummer" placeholder="Postnummer" name="Postnummer">
                     <label for="inputOrt"><b>Ort</b></label>
-                    <input type="text" class="form-control" value="@Model.Ort" id="inputOrt" placeholder="Ort">
+                    <input type="text" class="form-control" value="@Model.Ort" id="inputOrt" placeholder="Ort" name="Ort">
 
                 </div>
             </div>
@@ -89,14 +89,13 @@
                     <h3 style="font-family: sans-serif">Åtgärd</h3><br />
 
                     <label for="exampleFormControlSelect1"><b>Beviljad</b></label>
-                    <select class="form-control" id="exampleFormControlSelect1" name="beviljad">
+                    <select class="form-control" id="exampleFormControlSelect1" name="beviljad" required>
                         <option>Ja</option>
                         <option>Nej</option>
                     </select>
 
-
                     <label for="inputSkola"><b>Motivering</b></label>
-                    <input type="text" class="form-control" id="inputSkola" placeholder="" name="skolaNamn">
+                    <textarea class="form-control" id="motivering" placeholder="Skriv motivering..." name="motiveringName" required style="height:150px"></textarea>
                 </div>
 
 
