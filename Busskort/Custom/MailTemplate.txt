@@ -7,7 +7,10 @@
     <style>
       /* -------------------------------------
           GLOBAL RESETS
-      ------------------------------------- */
+      ------------------------------------- 
+      FROM: 
+      https://github.com/leemunroe/responsive-html-email-template/blob/master/email.html
+      */
       
       /*All the styling goes here*/
       
