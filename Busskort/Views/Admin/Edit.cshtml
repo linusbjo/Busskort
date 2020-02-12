@@ -1,14 +1,108 @@
 ﻿@model Busskort.Models.Anmälan
 
+
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_MasterPageNormal.cshtml";
 }
 
-<h2>Edit</h2>
-<div>
-    @using (Html.BeginForm())
-    {
+<h3 style= "text-align:center; font-family: sans-serif">Edit</h3>
+<br />
 
-    }
+<div>
+
+    <h3 style= "text-align:center; font-family: sans-serif">Ansökningsid: @Model.ID</h3>
+
+
+    <div class="container">
+        @using (Html.BeginForm("Edit", "Admin", FormMethod.Post))
+        {
+            <div class="form-row">
+
+                <div class="form-group col-md-6">
+                    <h3 style="font-family: sans-serif">Skola</h3><br />
+
+                    <label for="exampleFormControlSelect1"><b>Årskurs</b></label>
+                    <select class="form-control" id="exampleFormControlSelect1" name="year">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                    </select>
+
+
+                    <label for="inputSkola"><b>Skola</b></label>
+                    <input type="text" class="form-control" value="@Model.Skola" id="inputSkola" name="skolaNamn">
+                </div>
+
+                <div class="form-group col-md-6">
+                    <h3 style="font-family: sans-serif">Barn</h3><br />
+                    <label for="inputB_Personnummer"><b>Personnummer</b></label>
+                    <input type="text" class="form-control" value="@Model.barnPersonnummer" id="inputB_Personnummer" placeholder="ÅÅMMDD-XXXX" name="barnPersonnummer">
+                    <label for="inputB_fornamn"><b>Förnamn</b></label>
+                    <input type="text" class="form-control" value="@Model.barnFörnamn" id="inputB_fornamn" placeholder="Förnamn" name="barnFörnamn">
+                    <label for="inputB_efternamn"><b>Efternamn</b></label>
+                    <input type="text" class="form-control" value="@Model.barnEfternamn" id="inputB_efternamn" placeholder="Efternamn" name="barnEfternamn">
+                </div>
+
+                <div class="form-group col-md-6">
+                    <h3 style="font-family: sans-serif">Målsman</h3><br />
+                    <label for="inputM_Personnummer"><b>Personnummer</b></label>
+                    <input type="text" class="form-control" value="@Model.FörälderPersonnummer" id="inputF_Personnummer" placeholder="ÅÅMMDD-XXXX">
+                    <label for="inputM_fornamn"><b>Förnamn</b></label>
+                    <input type="text" class="form-control" value="@Model.Förnamn" id="inputM_fornamn" placeholder="Förnamn">
+                    <label for="inputM_efternamn"><b>Efternamn</b></label>
+                    <input type="text" class="form-control" value="@Model.Efternamn" id="inputM_efternamn" placeholder="Efternamn">
+                </div>
+
+                <div class="form-group col-md-6">
+                    <h3 style="font-family: sans-serif">Kontakt</h3><br />
+
+                    <label for="inputEmail"><b>E-post</b></label>
+                    <input type="email" class="form-control" value="@Model.E_post" id="inputEmail" placeholder="E-post">
+                    <label for="inputTelefon"><b>Telefon</b></label>
+                    <input type="text" class="form-control" value="@Model.Telefon"  id="inputTelefon" placeholder="Telefonnummer">
+                </div>
+
+                <div class="form-group col-md-6">
+                    <h3 style="font-family: sans-serif">Adress</h3><br />
+
+                    <label for="inputAdress"><b>Adress</b></label>
+                    <input type="text" class="form-control" value="@Model.Adress" id="inputAdress" placeholder="Gatunamn t.ex. Mjölnaregatan 16">
+                    <label for="inputPostnummer"><b>Postnummer</b></label>
+                    <input type="text" class="form-control" value="@Model.Postnummer" id="inputPostnummer" placeholder="Postnummer">
+                    <label for="inputOrt"><b>Ort</b></label>
+                    <input type="text" class="form-control" value="@Model.Ort" id="inputOrt" placeholder="Ort">
+
+                </div>
+            </div>
+
+
+            <div class="form-row">
+
+                <div class="form-group col-md-6">
+                    <h3 style="font-family: sans-serif">Åtgärd</h3><br />
+
+                    <label for="exampleFormControlSelect1"><b>Beviljad</b></label>
+                    <select class="form-control" id="exampleFormControlSelect1" name="beviljad">
+                        <option>Ja</option>
+                        <option>Nej</option>
+                    </select>
+
+
+                    <label for="inputSkola"><b>Motivering</b></label>
+                    <input type="text" class="form-control" id="inputSkola" placeholder="" name="skolaNamn">
+                </div>
+
+
+            </div>
+
+            <button type="submit" class="btn btn-primary">  Skicka  </button>
+        }
+    </div>
 </div>
