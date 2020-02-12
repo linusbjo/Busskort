@@ -22,10 +22,11 @@ namespace Busskort.Controllers
 
             return View(model);
         }
-        public ActionResult Edit()
+        [HttpPost]
+        public ActionResult Edit(int id)
         {
             Anmälan anmälan = new Anmälan();
-            anmälan = GetAnmälanByIDFromService(4);
+            anmälan = GetAnmälanByIDFromService(id);
 
             return View(anmälan);
         }
