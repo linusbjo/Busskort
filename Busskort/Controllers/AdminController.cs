@@ -29,6 +29,62 @@ namespace Busskort.Controllers
 
             return View(anmälan);
         }
+
+        // When edit is submit
+        [HttpPost]
+        public ActionResult EditConfirmed(FormCollection collection)
+        {
+            BusskortServiceReference.Anmälan anmälan = new BusskortServiceReference.Anmälan();
+            BusskortServiceReference.Service1Client client = new BusskortServiceReference.Service1Client();
+            EmailHandler email = new EmailHandler();
+
+            //TODO: ändra names
+            // Skola och årskurs
+            anmälan.Årskurs = Convert.ToInt32(collection["year"]);
+            anmälan.Skola = Convert.ToString(collection["skolaNamn"]);
+
+            // Barn
+            anmälan.barnPersonnummer = Convert.ToInt32(collection["barnPersonnummer"]);
+            anmälan.barnFörnamn = Convert.ToString(collection["barnFörnamn"]);
+            anmälan.barnEfternamn = Convert.ToString(collection["barnEfternamn"]);
+
+            // Målsman
+            anmälan.FörälderPersonnummer = Convert.ToInt32(collection["FörälderPersonnummer"]);
+            anmälan.Förnamn = Convert.ToString(collection["Förnamn"]);
+            anmälan.Efternamn = Convert.ToString(collection["Efternamn"]);
+
+            //Kontakt 
+            anmälan.E_post = Convert.ToString(collection["E_post"]);
+            anmälan.Telefon = Convert.ToInt32(collection["inputTelefon"]);
+
+            // Adress
+            anmälan.Adress = Convert.ToString(collection["Adress"]);
+            anmälan.Postnummer = Convert.ToInt32(collection["Postnummer"]);
+            anmälan.Ort = Convert.ToString(collection["Ort"]);
+
+            // Handläggare
+            anmälan.Beviljad = Convert.ToString(collection["beviljad"]);
+            anmälan.Motivering = Convert.ToString(collection["motiveringName"]);
+
+            // Update anmälan
+            client.UpdateAnmälan(anmälan);
+            string subject;
+
+            // Checks if beviljad or not
+            if(anmälan.Beviljad.ToLower() == "ja")
+            {
+                subject = "Ansökan om busskort - nekat";
+            }
+            else
+            {
+                subject = "Ansökan om busskort - beviljat";
+            }
+
+            email.SendMail(anmälan.E_post, subject, anmälan.Motivering);
+
+            return RedirectToAction("Index");
+        }
+
         public ActionResult Delete()
         {
             Anmälan anmälan = new Anmälan();

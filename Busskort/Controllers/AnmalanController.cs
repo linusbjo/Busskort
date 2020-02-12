@@ -44,8 +44,10 @@ namespace Busskort.Controllers
             newAnmälan.Ort = Convert.ToString(collection["Ort"]);
 
             BusskortServiceReference.Service1Client client = new BusskortServiceReference.Service1Client();
+            EmailHandler email = new EmailHandler();
 
             client.CreateAnmälan(newAnmälan);
+            email.SendRegisterMail(newAnmälan.E_post, "Registering");
 
             return View("Index");
         }
