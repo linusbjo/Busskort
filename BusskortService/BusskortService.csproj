@@ -75,7 +75,6 @@
   <ItemGroup>
     <Compile Include="AnmalanEntityDataModel.cs" />
     <Compile Include="Anmälan.cs" />
-    <Compile Include="AnmälanInput.cs" />
     <Compile Include="Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>
     </Compile>
