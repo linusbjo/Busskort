@@ -32,8 +32,12 @@
     </div>
 <footer class="footer">
     <div class="container">
-        <p>Här är footern</p>
+        <p>Datum: <span id="datetime"></span></p>
     </div>
 </footer>
+<script>
+    var dt = new Date();
+    document.getElementById("datetime").innerHTML = dt.toLocaleDateString();
+</script>
 </body>
 </html>
