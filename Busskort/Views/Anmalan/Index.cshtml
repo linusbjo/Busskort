@@ -4,19 +4,21 @@
     Layout = "~/Views/Shared/_MasterPageNormal.cshtml";
 }
 
-<h2>Ansökan om busskort</h2>
+<h2 style="text-align:center; font-family: sans-serif">Ansökan om busskort</h2>
+<br /><br />
 
 <!--Formulär för ansökan (lär väl fixa någon post senare, typ form action)-->
 
 <div class="container">
-    <form>
+    @using (Html.BeginForm("Create", "Anmalan", FormMethod.Post))
+    {
         <div class="form-row">
 
             <div class="form-group col-md-6">
-                <h1>Skola</h1><br />
+                <h3 style="font-family: sans-serif">Skola</h3><br />
 
-                <label for="exampleFormControlSelect1">Årskurs</label>
-                <select class="form-control" id="exampleFormControlSelect1">
+                <label for="exampleFormControlSelect1"><b>Årskurs</b></label>
+                <select class="form-control" id="exampleFormControlSelect1" name="year">
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -29,54 +31,54 @@
                 </select>
 
 
-                <label for="inputSkola">Skola</label>
-                <input type="text" class="form-control" id="inputSkola" placeholder="Skriv in skola">
+                <label for="inputSkola"><b>Skola</b></label>
+                <input type="text" class="form-control" id="inputSkola" placeholder="Skriv in skola" name="skolaNamn">
             </div>
 
             <div class="form-group col-md-6">
-                <h1>Barn</h1><br />
-                <label for="inputB_Personnummer">Personnummer</label>
-                <input type="text" class="form-control" id="inputB_Personnummer" placeholder="ÅÅMMDD-XXXX">
-                <label for="inputB_fornamn">Förnamn</label>
-                <input type="text" class="form-control" id="inputB_fornamn" placeholder="Förnamn">
-                <label for="inputB_efternamn">Efternamn</label>
-                <input type="text" class="form-control" id="inputB_efternamn" placeholder="Efternamn">
+                <h3 style="font-family: sans-serif">Barn</h3><br />
+                <label for="inputB_Personnummer"><b>Personnummer</b></label>
+                <input type="text" class="form-control" id="inputB_Personnummer" placeholder="ÅÅMMDD-XXXX" name="barnPersonnummer">
+                <label for="inputB_fornamn"><b>Förnamn</b></label>
+                <input type="text" class="form-control" id="inputB_fornamn" placeholder="Förnamn" name="barnFörnamn">
+                <label for="inputB_efternamn"><b>Efternamn</b></label>
+                <input type="text" class="form-control" id="inputB_efternamn" placeholder="Efternamn" name="barnEfternamn">
             </div>
 
             <div class="form-group col-md-6">
-                <h1>Målsman</h1><br />
-                <label for="inputM_Personnummer">Personnummer</label>
-                <input type="text" class="form-control" id="inputF_Personnummer" placeholder="ÅÅMMDD-XXXX">
-                <label for="inputM_fornamn">Förnamn</label>
-                <input type="text" class="form-control" id="inputM_fornamn" placeholder="Förnamn">
-                <label for="inputM_efternamn">Efternamn</label>
-                <input type="text" class="form-control" id="inputM_efternamn" placeholder="Efternamn">
+                <h3 style="font-family: sans-serif">Målsman</h3><br />
+                <label for="inputM_Personnummer"><b>Personnummer</b></label>
+                <input type="text" class="form-control" id="inputF_Personnummer" placeholder="ÅÅMMDD-XXXX" name="FörälderPersonnummer">
+                <label for="inputM_fornamn"><b>Förnamn</b></label>
+                <input type="text" class="form-control" id="inputM_fornamn" placeholder="Förnamn" name="Förnamn">
+                <label for="inputM_efternamn"><b>Efternamn</b></label>
+                <input type="text" class="form-control" id="inputM_efternamn" placeholder="Efternamn" name="Efternamn">
             </div>
 
             <div class="form-group col-md-6">
-                <h1>Kontakt</h1><br />
+                <h3 style="font-family: sans-serif">Kontakt</h3><br />
 
-                <label for="inputEmail">E-post</label>
-                <input type="email" class="form-control" id="inputEmail" placeholder="E-post">
-                <label for="inputTelefon">Telefon</label>
-                <input type="text" class="form-control" id="inputTelefon" placeholder="Telefonnummer">
+                <label for="inputEmail"><b>E-post</b></label>
+                <input type="email" class="form-control" id="inputEmail" placeholder="E-post" name="E_post">
+                <label for="inputTelefon"><b>Telefon</b></label>
+                <input type="text" class="form-control" id="inputTelefon" placeholder="Telefonnummer" name="inputTelefon">
             </div>
 
             <div class="form-group col-md-6">
-                <h1>Adress</h1><br />
+                <h3 style="font-family: sans-serif">Adress</h3><br />
 
-                <label for="inputAdress">Adress</label>
-                <input type="text" class="form-control" id="inputAdress" placeholder="Gatunamn t.ex. Mjölnaregatan 16">
-                <label for="inputPostnummer">Postnummer</label>
-                <input type="text" class="form-control" id="inputPostnummer" placeholder="Postnummer">
-                <label for="inputOrt">Postnummer</label>
-                <input type="text" class="form-control" id="inputOrt" placeholder="Ort">
+                <label for="inputAdress"><b>Adress</b></label>
+                <input type="text" class="form-control" id="inputAdress" placeholder="Gatunamn t.ex. Mjölnaregatan 16" name="Adress">
+                <label for="inputPostnummer"><b>Postnummer</b></label>
+                <input type="text" class="form-control" id="inputPostnummer" placeholder="Postnummer" name="Postnummer">
+                <label for="inputOrt"><b>Postnummer</b></label>
+                <input type="text" class="form-control" id="inputOrt" placeholder="Ort" name="Ort">
 
             </div>
         </div>
         <br />
         <button type="submit" class="btn btn-primary">  Skicka  </button>
-    </form>
+    }
 
 </div>
 

@@ -9,13 +9,66 @@ namespace Busskort.Controllers
 {
     public class AdminController : Controller
     {
+        public ActionResult Login()
+        {
+            return View();
+        }
+
         // GET: Admin
         public ActionResult Index()
-        {
-            List<Anmälan> AnmälanList = new List<Anmälan>();
-            BusskortViewModel model = new BusskortViewModel();
-            BusskortServiceReference.Service1Client client = new BusskortServiceReference.Service1Client();
+        {            
+            BusskortViewModel model = new BusskortViewModel();                  
+            model.AnmälanList = GetAnmälanListFromService();
 
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult Edit(int id)
+        {
+            Anmälan anmälan = new Anmälan();
+            anmälan = GetAnmälanByIDFromService(id);
+
+            return View(anmälan);
+        }
+        public ActionResult Delete()
+        {
+            Anmälan anmälan = new Anmälan();
+            anmälan = GetAnmälanByIDFromService(4);
+
+            return View(anmälan);
+        }
+
+        #region Internal methods
+        private Anmälan GetAnmälanByIDFromService(int id)
+        {
+            BusskortServiceReference.Service1Client client = new BusskortServiceReference.Service1Client();
+            Anmälan anmälan = new Anmälan();
+
+            var tempAnmälan = client.GetAnmälan(id);
+
+            anmälan.ID = tempAnmälan.ID;
+            anmälan.Förnamn = tempAnmälan.Förnamn;
+            anmälan.Efternamn = tempAnmälan.Efternamn;
+            anmälan.barnPersonnummer = tempAnmälan.barnPersonnummer;
+            anmälan.FörälderPersonnummer = tempAnmälan.FörälderPersonnummer;
+            anmälan.barnFörnamn = tempAnmälan.barnFörnamn;
+            anmälan.barnEfternamn = tempAnmälan.barnEfternamn;
+            anmälan.Adress = tempAnmälan.Adress;
+            anmälan.Postnummer = tempAnmälan.Postnummer;
+            anmälan.E_post = tempAnmälan.E_post;
+            anmälan.Ort = tempAnmälan.Ort;
+            anmälan.Årskurs = tempAnmälan.Årskurs;
+            anmälan.Skola = tempAnmälan.Skola;
+            anmälan.Beviljad = tempAnmälan.Beviljad;
+            anmälan.Motivering = tempAnmälan.Motivering;
+            anmälan.Telefon = tempAnmälan.Telefon;
+
+            return anmälan;
+        }
+        private List<Anmälan> GetAnmälanListFromService()
+        {
+            BusskortServiceReference.Service1Client client = new BusskortServiceReference.Service1Client();
+            List<Anmälan> AnmälanList = new List<Anmälan>();
             var temp = client.GetAnmälanList();
 
             foreach (var item in temp)
@@ -33,18 +86,17 @@ namespace Busskort.Controllers
                 tempAnmälan.Ort = item.Ort;
                 tempAnmälan.Årskurs = item.Årskurs;
                 tempAnmälan.Skola = item.Skola;
+                tempAnmälan.Beviljad = item.Beviljad;
+                tempAnmälan.Motivering = item.Motivering;
+                tempAnmälan.Telefon = item.Telefon;
+                tempAnmälan.FörälderPersonnummer = item.FörälderPersonnummer;
 
-                if(item.Beviljad != null)
-                {
-                    tempAnmälan.Beviljad = Convert.ToBoolean(item.Beviljad);
-                }
-                
                 AnmälanList.Add(tempAnmälan);
             }
 
-            model.AnmälanList = AnmälanList;
-
-            return View(model);
+            return AnmälanList;
         }
+        #endregion
+
     }
 }

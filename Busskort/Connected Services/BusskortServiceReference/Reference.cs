@@ -26,7 +26,7 @@ namespace Busskort.BusskortServiceReference {
         private string AdressField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<bool> BeviljadField;
+        private string BeviljadField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string E_postField;
@@ -38,7 +38,13 @@ namespace Busskort.BusskortServiceReference {
         private string FörnamnField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int FörälderPersonnummerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MotiveringField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string OrtField;
@@ -88,12 +94,12 @@ namespace Busskort.BusskortServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<bool> Beviljad {
+        public string Beviljad {
             get {
                 return this.BeviljadField;
             }
             set {
-                if ((this.BeviljadField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.BeviljadField, value) != true)) {
                     this.BeviljadField = value;
                     this.RaisePropertyChanged("Beviljad");
                 }
@@ -140,6 +146,19 @@ namespace Busskort.BusskortServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public int FörälderPersonnummer {
+            get {
+                return this.FörälderPersonnummerField;
+            }
+            set {
+                if ((this.FörälderPersonnummerField.Equals(value) != true)) {
+                    this.FörälderPersonnummerField = value;
+                    this.RaisePropertyChanged("FörälderPersonnummer");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public int ID {
             get {
                 return this.IDField;
@@ -148,6 +167,19 @@ namespace Busskort.BusskortServiceReference {
                 if ((this.IDField.Equals(value) != true)) {
                     this.IDField = value;
                     this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Motivering {
+            get {
+                return this.MotiveringField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MotiveringField, value) != true)) {
+                    this.MotiveringField = value;
+                    this.RaisePropertyChanged("Motivering");
                 }
             }
         }
@@ -281,6 +313,24 @@ namespace Busskort.BusskortServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAnmälan", ReplyAction="http://tempuri.org/IService1/GetAnmälanResponse")]
         System.Threading.Tasks.Task<Busskort.BusskortServiceReference.Anmälan> GetAnmälanAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteAnmälan", ReplyAction="http://tempuri.org/IService1/DeleteAnmälanResponse")]
+        void DeleteAnmälan(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteAnmälan", ReplyAction="http://tempuri.org/IService1/DeleteAnmälanResponse")]
+        System.Threading.Tasks.Task DeleteAnmälanAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateAnmälan", ReplyAction="http://tempuri.org/IService1/UpdateAnmälanResponse")]
+        void UpdateAnmälan(Busskort.BusskortServiceReference.Anmälan anmälan);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateAnmälan", ReplyAction="http://tempuri.org/IService1/UpdateAnmälanResponse")]
+        System.Threading.Tasks.Task UpdateAnmälanAsync(Busskort.BusskortServiceReference.Anmälan anmälan);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CreateAnmälan", ReplyAction="http://tempuri.org/IService1/CreateAnmälanResponse")]
+        void CreateAnmälan(Busskort.BusskortServiceReference.Anmälan anmälan);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CreateAnmälan", ReplyAction="http://tempuri.org/IService1/CreateAnmälanResponse")]
+        System.Threading.Tasks.Task CreateAnmälanAsync(Busskort.BusskortServiceReference.Anmälan anmälan);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -324,6 +374,30 @@ namespace Busskort.BusskortServiceReference {
         
         public System.Threading.Tasks.Task<Busskort.BusskortServiceReference.Anmälan> GetAnmälanAsync(int id) {
             return base.Channel.GetAnmälanAsync(id);
+        }
+        
+        public void DeleteAnmälan(int id) {
+            base.Channel.DeleteAnmälan(id);
+        }
+        
+        public System.Threading.Tasks.Task DeleteAnmälanAsync(int id) {
+            return base.Channel.DeleteAnmälanAsync(id);
+        }
+        
+        public void UpdateAnmälan(Busskort.BusskortServiceReference.Anmälan anmälan) {
+            base.Channel.UpdateAnmälan(anmälan);
+        }
+        
+        public System.Threading.Tasks.Task UpdateAnmälanAsync(Busskort.BusskortServiceReference.Anmälan anmälan) {
+            return base.Channel.UpdateAnmälanAsync(anmälan);
+        }
+        
+        public void CreateAnmälan(Busskort.BusskortServiceReference.Anmälan anmälan) {
+            base.Channel.CreateAnmälan(anmälan);
+        }
+        
+        public System.Threading.Tasks.Task CreateAnmälanAsync(Busskort.BusskortServiceReference.Anmälan anmälan) {
+            return base.Channel.CreateAnmälanAsync(anmälan);
         }
     }
 }

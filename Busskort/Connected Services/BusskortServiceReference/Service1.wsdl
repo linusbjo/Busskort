@@ -19,6 +19,24 @@
   <wsdl:message name="IService1_GetAnmälan_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAnmälanResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_DeleteAnmälan_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAnmälan" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteAnmälan_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAnmälanResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateAnmälan_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAnmälan" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateAnmälan_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAnmälanResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CreateAnmälan_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateAnmälan" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CreateAnmälan_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateAnmälanResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetAnmälanList">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAnmälanList" message="tns:IService1_GetAnmälanList_InputMessage" />
@@ -27,6 +45,18 @@
     <wsdl:operation name="GetAnmälan">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAnmälan" message="tns:IService1_GetAnmälan_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAnmälanResponse" message="tns:IService1_GetAnmälan_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAnmälan">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteAnmälan" message="tns:IService1_DeleteAnmälan_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeleteAnmälanResponse" message="tns:IService1_DeleteAnmälan_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAnmälan">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateAnmälan" message="tns:IService1_UpdateAnmälan_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateAnmälanResponse" message="tns:IService1_UpdateAnmälan_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateAnmälan">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/CreateAnmälan" message="tns:IService1_CreateAnmälan_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CreateAnmälanResponse" message="tns:IService1_CreateAnmälan_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -42,6 +72,33 @@
     </wsdl:operation>
     <wsdl:operation name="GetAnmälan">
       <soap:operation soapAction="http://tempuri.org/IService1/GetAnmälan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAnmälan">
+      <soap:operation soapAction="http://tempuri.org/IService1/DeleteAnmälan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAnmälan">
+      <soap:operation soapAction="http://tempuri.org/IService1/UpdateAnmälan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateAnmälan">
+      <soap:operation soapAction="http://tempuri.org/IService1/CreateAnmälan" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

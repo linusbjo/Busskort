@@ -109,6 +109,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Custom\Admin\Index.css" />
+    <Content Include="Custom\Admin\Index.js" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -235,6 +236,7 @@
     </Compile>
     <Compile Include="Models\Anmälan.cs" />
     <Compile Include="Models\BusskortViewModel.cs" />
+    <Compile Include="Models\EmailHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -255,6 +257,8 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Anmalan\Index.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\Edit.cshtml" />
+    <Content Include="Views\Admin\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

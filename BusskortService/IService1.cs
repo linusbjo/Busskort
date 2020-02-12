@@ -12,7 +12,6 @@ namespace BusskortService
     [ServiceContract]
     public interface IService1
     {
-
         [OperationContract]
         List<Anmälan> GetAnmälanList();
 
@@ -23,9 +22,9 @@ namespace BusskortService
         void DeleteAnmälan(int id);
 
         [OperationContract]
-        void UpdateAnmälan(AnmälanInput anmälanInput);
+        void UpdateAnmälan(Anmälan anmälan);
 
         [OperationContract]
-        void CreateAnmälan(AnmälanInput anmälanInput);
+        void CreateAnmälan(Anmälan anmälan);
     }
 }
