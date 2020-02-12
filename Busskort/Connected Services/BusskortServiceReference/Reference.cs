@@ -298,275 +298,6 @@ namespace Busskort.BusskortServiceReference {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="AnmälanInput", Namespace="http://schemas.datacontract.org/2004/07/BusskortService")]
-    [System.SerializableAttribute()]
-    public partial class AnmälanInput : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string AdressField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string BeviljadField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string E_postField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string EfternamnField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FörnamnField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string MotiveringField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string OrtField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int PostnummerField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SkolaField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int TelefonField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string barnEfternamnField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string barnFörnamnField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int barnPersonnummerField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int ÅrskursField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Adress {
-            get {
-                return this.AdressField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.AdressField, value) != true)) {
-                    this.AdressField = value;
-                    this.RaisePropertyChanged("Adress");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Beviljad {
-            get {
-                return this.BeviljadField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.BeviljadField, value) != true)) {
-                    this.BeviljadField = value;
-                    this.RaisePropertyChanged("Beviljad");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string E_post {
-            get {
-                return this.E_postField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.E_postField, value) != true)) {
-                    this.E_postField = value;
-                    this.RaisePropertyChanged("E_post");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Efternamn {
-            get {
-                return this.EfternamnField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.EfternamnField, value) != true)) {
-                    this.EfternamnField = value;
-                    this.RaisePropertyChanged("Efternamn");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Förnamn {
-            get {
-                return this.FörnamnField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FörnamnField, value) != true)) {
-                    this.FörnamnField = value;
-                    this.RaisePropertyChanged("Förnamn");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int ID {
-            get {
-                return this.IDField;
-            }
-            set {
-                if ((this.IDField.Equals(value) != true)) {
-                    this.IDField = value;
-                    this.RaisePropertyChanged("ID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Motivering {
-            get {
-                return this.MotiveringField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MotiveringField, value) != true)) {
-                    this.MotiveringField = value;
-                    this.RaisePropertyChanged("Motivering");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Ort {
-            get {
-                return this.OrtField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.OrtField, value) != true)) {
-                    this.OrtField = value;
-                    this.RaisePropertyChanged("Ort");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Postnummer {
-            get {
-                return this.PostnummerField;
-            }
-            set {
-                if ((this.PostnummerField.Equals(value) != true)) {
-                    this.PostnummerField = value;
-                    this.RaisePropertyChanged("Postnummer");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Skola {
-            get {
-                return this.SkolaField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SkolaField, value) != true)) {
-                    this.SkolaField = value;
-                    this.RaisePropertyChanged("Skola");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Telefon {
-            get {
-                return this.TelefonField;
-            }
-            set {
-                if ((this.TelefonField.Equals(value) != true)) {
-                    this.TelefonField = value;
-                    this.RaisePropertyChanged("Telefon");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string barnEfternamn {
-            get {
-                return this.barnEfternamnField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.barnEfternamnField, value) != true)) {
-                    this.barnEfternamnField = value;
-                    this.RaisePropertyChanged("barnEfternamn");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string barnFörnamn {
-            get {
-                return this.barnFörnamnField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.barnFörnamnField, value) != true)) {
-                    this.barnFörnamnField = value;
-                    this.RaisePropertyChanged("barnFörnamn");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int barnPersonnummer {
-            get {
-                return this.barnPersonnummerField;
-            }
-            set {
-                if ((this.barnPersonnummerField.Equals(value) != true)) {
-                    this.barnPersonnummerField = value;
-                    this.RaisePropertyChanged("barnPersonnummer");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Årskurs {
-            get {
-                return this.ÅrskursField;
-            }
-            set {
-                if ((this.ÅrskursField.Equals(value) != true)) {
-                    this.ÅrskursField = value;
-                    this.RaisePropertyChanged("Årskurs");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="BusskortServiceReference.IService1")]
     public interface IService1 {
@@ -590,16 +321,16 @@ namespace Busskort.BusskortServiceReference {
         System.Threading.Tasks.Task DeleteAnmälanAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateAnmälan", ReplyAction="http://tempuri.org/IService1/UpdateAnmälanResponse")]
-        void UpdateAnmälan(Busskort.BusskortServiceReference.AnmälanInput anmälanInput);
+        void UpdateAnmälan(Busskort.BusskortServiceReference.Anmälan anmälan);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateAnmälan", ReplyAction="http://tempuri.org/IService1/UpdateAnmälanResponse")]
-        System.Threading.Tasks.Task UpdateAnmälanAsync(Busskort.BusskortServiceReference.AnmälanInput anmälanInput);
+        System.Threading.Tasks.Task UpdateAnmälanAsync(Busskort.BusskortServiceReference.Anmälan anmälan);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CreateAnmälan", ReplyAction="http://tempuri.org/IService1/CreateAnmälanResponse")]
-        void CreateAnmälan(Busskort.BusskortServiceReference.AnmälanInput anmälanInput);
+        void CreateAnmälan(Busskort.BusskortServiceReference.Anmälan anmälan);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CreateAnmälan", ReplyAction="http://tempuri.org/IService1/CreateAnmälanResponse")]
-        System.Threading.Tasks.Task CreateAnmälanAsync(Busskort.BusskortServiceReference.AnmälanInput anmälanInput);
+        System.Threading.Tasks.Task CreateAnmälanAsync(Busskort.BusskortServiceReference.Anmälan anmälan);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -653,20 +384,20 @@ namespace Busskort.BusskortServiceReference {
             return base.Channel.DeleteAnmälanAsync(id);
         }
         
-        public void UpdateAnmälan(Busskort.BusskortServiceReference.AnmälanInput anmälanInput) {
-            base.Channel.UpdateAnmälan(anmälanInput);
+        public void UpdateAnmälan(Busskort.BusskortServiceReference.Anmälan anmälan) {
+            base.Channel.UpdateAnmälan(anmälan);
         }
         
-        public System.Threading.Tasks.Task UpdateAnmälanAsync(Busskort.BusskortServiceReference.AnmälanInput anmälanInput) {
-            return base.Channel.UpdateAnmälanAsync(anmälanInput);
+        public System.Threading.Tasks.Task UpdateAnmälanAsync(Busskort.BusskortServiceReference.Anmälan anmälan) {
+            return base.Channel.UpdateAnmälanAsync(anmälan);
         }
         
-        public void CreateAnmälan(Busskort.BusskortServiceReference.AnmälanInput anmälanInput) {
-            base.Channel.CreateAnmälan(anmälanInput);
+        public void CreateAnmälan(Busskort.BusskortServiceReference.Anmälan anmälan) {
+            base.Channel.CreateAnmälan(anmälan);
         }
         
-        public System.Threading.Tasks.Task CreateAnmälanAsync(Busskort.BusskortServiceReference.AnmälanInput anmälanInput) {
-            return base.Channel.CreateAnmälanAsync(anmälanInput);
+        public System.Threading.Tasks.Task CreateAnmälanAsync(Busskort.BusskortServiceReference.Anmälan anmälan) {
+            return base.Channel.CreateAnmälanAsync(anmälan);
         }
     }
 }
