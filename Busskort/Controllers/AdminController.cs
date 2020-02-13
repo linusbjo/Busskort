@@ -24,8 +24,11 @@ namespace Busskort.Controllers
         [HttpPost]
         public ActionResult Edit(int id)
         {
+            DropdownList dropdown = new DropdownList();
             BusskortServiceReference.Anmälan anmälan = new BusskortServiceReference.Anmälan();
+
             anmälan = GetAnmälanByIDFromService(id);
+            ViewBag.DropDownYears = dropdown.GetSelectedValueFromDropDownYear(anmälan.Årskurs);
 
             return View(anmälan);
         }

@@ -12,12 +12,17 @@ namespace Busskort.Controllers
         // GET: Anmalan
         public ActionResult Index()
         {
+            // Create a dropdown with ViewBag from a class
+            DropdownList dropdown = new DropdownList();
+            ViewBag.DropDownYears = dropdown.GetYearDropDown();
+
             return View();
         }
 
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
+            // Use class from reference, otherwise errors will occur when passing the object to the service
             BusskortServiceReference.Anmälan newAnmälan = new BusskortServiceReference.Anmälan();
 
             // Skola och årskurs
@@ -43,6 +48,7 @@ namespace Busskort.Controllers
             newAnmälan.Postnummer = Convert.ToInt32(collection["Postnummer"]);
             newAnmälan.Ort = Convert.ToString(collection["Ort"]);
 
+            // 
             BusskortServiceReference.Service1Client client = new BusskortServiceReference.Service1Client();
             EmailHandler email = new EmailHandler();
 

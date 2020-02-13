@@ -239,6 +239,7 @@
     </Compile>
     <Compile Include="Models\Anmälan.cs" />
     <Compile Include="Models\BusskortViewModel.cs" />
+    <Compile Include="Models\DropdownList.cs" />
     <Compile Include="Models\EmailHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
