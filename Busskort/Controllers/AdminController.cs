@@ -24,7 +24,7 @@ namespace Busskort.Controllers
         [HttpPost]
         public ActionResult Edit(int id)
         {
-            Anmälan anmälan = new Anmälan();
+            BusskortServiceReference.Anmälan anmälan = new BusskortServiceReference.Anmälan();
             anmälan = GetAnmälanByIDFromService(id);
 
             return View(anmälan);
@@ -38,7 +38,6 @@ namespace Busskort.Controllers
             BusskortServiceReference.Service1Client client = new BusskortServiceReference.Service1Client();
             EmailHandler email = new EmailHandler();
 
-            //TODO: ändra names
             // Skola och årskurs
             anmälan.Årskurs = Convert.ToInt32(collection["year"]);
             anmälan.Skola = Convert.ToString(collection["skolaNamn"]);
@@ -80,55 +79,39 @@ namespace Busskort.Controllers
                 subject = "Ansökan om busskort - beviljat";
             }
 
-            email.SendMail(anmälan.E_post, subject, anmälan.Motivering);
+            email.SendMail(anmälan, subject);
 
             return RedirectToAction("Index");
         }
-
-        public ActionResult Delete()
+        
+        [HttpPost]
+        public ActionResult Delete(int id)
         {
-            Anmälan anmälan = new Anmälan();
-            anmälan = GetAnmälanByIDFromService(4);
+            BusskortServiceReference.Anmälan anmälan = new BusskortServiceReference.Anmälan();
+            anmälan = GetAnmälanByIDFromService(id);
 
             return View(anmälan);
         }
 
         #region Internal methods
-        private Anmälan GetAnmälanByIDFromService(int id)
+        private BusskortServiceReference.Anmälan GetAnmälanByIDFromService(int id)
         {
             BusskortServiceReference.Service1Client client = new BusskortServiceReference.Service1Client();
-            Anmälan anmälan = new Anmälan();
+            BusskortServiceReference.Anmälan anmälan = new BusskortServiceReference.Anmälan();
 
-            var tempAnmälan = client.GetAnmälan(id);
-
-            anmälan.ID = tempAnmälan.ID;
-            anmälan.Förnamn = tempAnmälan.Förnamn;
-            anmälan.Efternamn = tempAnmälan.Efternamn;
-            anmälan.barnPersonnummer = tempAnmälan.barnPersonnummer;
-            anmälan.FörälderPersonnummer = tempAnmälan.FörälderPersonnummer;
-            anmälan.barnFörnamn = tempAnmälan.barnFörnamn;
-            anmälan.barnEfternamn = tempAnmälan.barnEfternamn;
-            anmälan.Adress = tempAnmälan.Adress;
-            anmälan.Postnummer = tempAnmälan.Postnummer;
-            anmälan.E_post = tempAnmälan.E_post;
-            anmälan.Ort = tempAnmälan.Ort;
-            anmälan.Årskurs = tempAnmälan.Årskurs;
-            anmälan.Skola = tempAnmälan.Skola;
-            anmälan.Beviljad = tempAnmälan.Beviljad;
-            anmälan.Motivering = tempAnmälan.Motivering;
-            anmälan.Telefon = tempAnmälan.Telefon;
-
+            anmälan = client.GetAnmälan(id);
+      
             return anmälan;
         }
-        private List<Anmälan> GetAnmälanListFromService()
+        private List<BusskortServiceReference.Anmälan> GetAnmälanListFromService()
         {
             BusskortServiceReference.Service1Client client = new BusskortServiceReference.Service1Client();
-            List<Anmälan> AnmälanList = new List<Anmälan>();
+            List<BusskortServiceReference.Anmälan> AnmälanList = new List<BusskortServiceReference.Anmälan>();
             var temp = client.GetAnmälanList();
 
             foreach (var item in temp)
             {
-                Anmälan tempAnmälan = new Anmälan();
+                BusskortServiceReference.Anmälan tempAnmälan = new BusskortServiceReference.Anmälan();
                 tempAnmälan.ID = item.ID;
                 tempAnmälan.Förnamn = item.Förnamn;
                 tempAnmälan.Efternamn = item.Efternamn;

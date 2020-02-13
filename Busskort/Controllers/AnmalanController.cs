@@ -47,7 +47,7 @@ namespace Busskort.Controllers
             EmailHandler email = new EmailHandler();
 
             client.CreateAnmälan(newAnmälan);
-            email.SendRegisterMail(newAnmälan.E_post, "Registering");
+            email.SendRegisterMail(newAnmälan, "Registering");
 
             return View("Index");
         }

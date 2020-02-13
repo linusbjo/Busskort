@@ -111,7 +111,7 @@
     <Content Include="Custom\Admin\Index.css" />
     <Content Include="Custom\Admin\Index.js" />
     <Content Include="Custom\MailReplyTemplate.txt" />
-    <Content Include="Custom\MailTemplate.txt" />
+    <Content Include="Custom\MailConfirmTemplate.txt" />
     <Content Include="Custom\MasterPage\MasterPage.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.bundle.js" />

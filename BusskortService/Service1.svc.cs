@@ -55,23 +55,16 @@ namespace BusskortService
             UpdateAnmälan.Telefon = anmälan.Telefon;
             UpdateAnmälan.E_post = anmälan.E_post;
             UpdateAnmälan.FörälderPersonnummer = anmälan.FörälderPersonnummer;
+            UpdateAnmälan.Motivering = anmälan.Motivering;
 
             db.SaveChanges();
 
         }
         public void CreateAnmälan(Anmälan anmälan)
         {
-            try
-            {
                 AnmalanEntityDataModel db = new AnmalanEntityDataModel();
                 db.Anmälan.Add(anmälan);
                 db.SaveChanges();
-            }
-            catch (Exception e)
-            {
-
-            }
-
         }
     }
 }
