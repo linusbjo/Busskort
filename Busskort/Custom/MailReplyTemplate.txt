@@ -353,7 +353,7 @@
                     <tr>
                       <td>
                         <p>Hej!</p>
-                        <p>Du har skapat en registreing till en ny skola för ditt barn.</p>
+                        <p>Du har skapat en ansökan om busskort för ditt barn.</p>
                         <p>Vi kommer att gå igenom ärendet så snart vi kan och du kommer få svar via ditt mail.</p>
                         
                         <br/>
