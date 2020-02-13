@@ -9,7 +9,7 @@ namespace Busskort.Models
 {
     public class EmailHandler
     {
-        private static string FromAdress = "@gmail.com", Password = "lösenord", FromName = "Anmälan Service";
+        private string FromAdress = "@gmail.com", Password = "lösenord", FromName = "Anmälan Service";
 
         public void SendRegisterMail(string ToMailAdress, string Subject)
         {

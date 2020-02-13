@@ -355,7 +355,13 @@
                         <p>Hej!</p>
                         <p>Du har skapat en registreing till en ny skola för ditt barn.</p>
                         <p>Vi kommer att gå igenom ärendet så snart vi kan och du kommer få svar via ditt mail.</p>
-                   
+                        
+                        <br/>
+                          <p><span style="font-weight:bold">Skola som du har ansökt:</span> ReplaceContentSkola</p>
+                          <p><span style="font-weight:bold">Barnet som du har ansökt om:</span> ReplaceContentBarnNamn</p>
+                          <p><span style="font-weight:bold">Ansvarig vårdnadshavare:</span> ReplaceContentCaretaker</p>
+                        <br/>
+
                         <p>För frågor hänvisar vi dig hit...</p>
                       </td>
                     </tr>
