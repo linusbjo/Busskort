@@ -336,7 +336,7 @@
     </style>
   </head>
   <body class="">
-    <span class="preheader">Du har skapat en ansökan för en ny skola.</span>
+    <span class="preheader">Du har skapat en ansökan för ett busskort.</span>
     <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
       <tr>
         <td>&nbsp;</td>
@@ -362,7 +362,6 @@
                           <p><span style="font-weight:bold">Ansvarig vårdnadshavare:</span> ReplaceContentCaretaker</p>
                         <br/>
 
-                        <p>För frågor hänvisar vi dig hit...</p>
                       </td>
                     </tr>
                   </table>

@@ -15,8 +15,8 @@ namespace Busskort.Controllers
             return View();
         }
         public ActionResult Index()
-        {            
-            BusskortViewModel model = new BusskortViewModel();                  
+        {
+            BusskortViewModel model = new BusskortViewModel();
             model.AnmälanList = GetAnmälanListFromService();
 
             return View(model);
@@ -35,11 +35,14 @@ namespace Busskort.Controllers
 
         // When edit is submit
         [HttpPost]
+        [ValidateInput(true)]
         public ActionResult EditConfirmed(FormCollection collection)
         {
             BusskortServiceReference.Anmälan anmälan = new BusskortServiceReference.Anmälan();
             BusskortServiceReference.Service1Client client = new BusskortServiceReference.Service1Client();
             EmailHandler email = new EmailHandler();
+
+            anmälan.ID = Convert.ToInt32(collection["ID"]);
 
             // Skola och årskurs
             anmälan.Årskurs = Convert.ToInt32(collection["year"]);
