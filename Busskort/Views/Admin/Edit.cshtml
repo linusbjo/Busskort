@@ -6,23 +6,22 @@
     Layout = "~/Views/Shared/_MasterPageNormal.cshtml";
 }
 
-<h3 style= "text-align:center; font-family: sans-serif">Edit</h3>
-<br />
+
 
 <div>
-
-    <h3 style= "text-align:center; font-family: sans-serif">Ansöknings id: @Model.ID</h3>
-
-
+        
     <div class="container">
+        <h1 class="pagetitle" font-family: sans-serif">Edit</h1>
+        <h6 font-family: sans-serif">Anmälan ID: @Model.ID</h6>
+        <br />
         @using (Html.BeginForm("Edit", "Admin", FormMethod.Post))
         {
             <div class="form-row">
 
                 <div class="form-group col-md-6">
-                    <h3 style="font-family: sans-serif">Skola</h3><br />
+                    <h3 class="formlabel" style="font-family: sans-serif">Skola</h3><br />
 
-                    <label for="exampleFormControlSelect1"><b>Årskurs</b></label>                
+                    <label for="exampleFormControlSelect1"><b>Årskurs</b></label>
                     @Html.DropDownList("year", (IEnumerable<SelectListItem>)ViewBag.DropDownYears, new { id = "exampleFormControlSelect1", @class = "form-control" })
 
                     <label for="inputSkola"><b>Skola</b></label>
@@ -30,7 +29,7 @@
                 </div>
 
                 <div class="form-group col-md-6">
-                    <h3 style="font-family: sans-serif">Barn</h3><br />
+                    <h3 class="formlabel" style="font-family: sans-serif">Barn</h3><br />
                     <label for="inputB_Personnummer"><b>Personnummer</b></label>
                     <input type="text" class="form-control" value="@Model.barnPersonnummer" id="inputB_Personnummer" placeholder="ÅÅMMDD-XXXX" name="barnPersonnummer">
                     <label for="inputB_fornamn"><b>Förnamn</b></label>
@@ -40,7 +39,7 @@
                 </div>
 
                 <div class="form-group col-md-6">
-                    <h3 style="font-family: sans-serif">Målsman</h3><br />
+                    <h3 class="formlabel" style="font-family: sans-serif">Målsman</h3><br />
                     <label for="inputM_Personnummer"><b>Personnummer</b></label>
                     <input type="text" class="form-control" value="@Model.FörälderPersonnummer" id="inputF_Personnummer" placeholder="ÅÅMMDD-XXXX" name="FörälderPersonnummer">
                     <label for="inputM_fornamn"><b>Förnamn</b></label>
@@ -50,16 +49,16 @@
                 </div>
 
                 <div class="form-group col-md-6">
-                    <h3 style="font-family: sans-serif">Kontakt</h3><br />
+                    <h3 class="formlabel" style="font-family: sans-serif">Kontakt</h3><br />
 
                     <label for="inputEmail"><b>E-post</b></label>
                     <input type="email" class="form-control" value="@Model.E_post" id="inputEmail" placeholder="E-post" name="E_post">
                     <label for="inputTelefon"><b>Telefon</b></label>
-                    <input type="text" class="form-control" value="@Model.Telefon"  id="inputTelefon" placeholder="Telefonnummer" name="inputTelefon">
+                    <input type="text" class="form-control" value="@Model.Telefon" id="inputTelefon" placeholder="Telefonnummer" name="inputTelefon">
                 </div>
 
                 <div class="form-group col-md-6">
-                    <h3 style="font-family: sans-serif">Adress</h3><br />
+                    <h3 class="formlabel" style="font-family: sans-serif">Adress</h3><br />
 
                     <label for="inputAdress"><b>Adress</b></label>
                     <input type="text" class="form-control" value="@Model.Adress" id="inputAdress" placeholder="Gatunamn t.ex. Mjölnaregatan 16" name="Adress">
@@ -75,7 +74,7 @@
             <div class="form-row">
 
                 <div class="form-group col-md-6">
-                    <h3 style="font-family: sans-serif">Åtgärd</h3><br />
+                    <h3 class="formlabel" style="font-family: sans-serif">Åtgärd</h3><br />
 
                     <label for="exampleFormControlSelect1"><b>Beviljad</b></label>
                     <select class="form-control" id="exampleFormControlSelect1" name="beviljad" required>
@@ -94,3 +93,5 @@
         }
     </div>
 </div>
+<br />
+<br />
