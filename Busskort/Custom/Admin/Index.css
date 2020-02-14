@@ -8,6 +8,6 @@ td{
 #displayDataTable th {
     cursor: pointer;
 }
-#index-tbody tr:hover {
+tr:hover {
     background-color:floralwhite;
 }
