@@ -15,8 +15,9 @@ namespace BusskortService
         public List<Anmälan> GetAnmälanList()
         {
             AnmalanEntityDataModel db = new AnmalanEntityDataModel();
-
-            return db.Anmälan.ToList();
+            List<Anmälan> AnmälanList = new List<Anmälan>();
+            AnmälanList = db.Anmälan.ToList();
+            return AnmälanList;
         }
 
         public Anmälan GetAnmälan(int id)

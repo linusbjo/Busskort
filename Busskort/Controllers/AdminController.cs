@@ -75,7 +75,7 @@ namespace Busskort.Controllers
             client.UpdateAnmälan(anmälan);
             string Subject;
 
-            // Checks if beviljad or not
+            // Checks if denied or not
             if(anmälan.Beviljad.ToLower() == "ja")
             {
                 Subject = "Ansökan om busskort - beviljat";
@@ -112,10 +112,7 @@ namespace Busskort.Controllers
         private BusskortServiceReference.Anmälan GetAnmälanByIDFromService(int id)
         {
             BusskortServiceReference.Service1Client client = new BusskortServiceReference.Service1Client();
-            BusskortServiceReference.Anmälan anmälan = new BusskortServiceReference.Anmälan();
 
-            anmälan = client.GetAnmälan(id);
-      
             return client.GetAnmälan(id);
         }
         private List<BusskortServiceReference.Anmälan> GetAnmälanListFromService()
