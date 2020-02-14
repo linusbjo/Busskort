@@ -355,10 +355,16 @@
                         <p>Hej!</p>
                         <p>Du har skapat en ansökan om busskort för ditt barn.</p>
                         <p>Vi kommer att gå igenom ärendet så snart vi kan och du kommer få svar via ditt mail.</p>
-                   
-                        <p>För frågor hänvisar vi dig hit...</p>
+                        
+                        <br/>
+                          <p><span style="font-weight:bold">Skola som du har ansökt:</span> ReplaceContentSkola</p>
+                          <p><span style="font-weight:bold">Barnet som du har ansökt om:</span> ReplaceContentBarnNamn</p>
+                          <p><span style="font-weight:bold">Ansvarig vårdnadshavare:</span> ReplaceContentCaretaker</p>
+                        <br/>
+                        <p><span style="font-weight:bold">Beslut:</span> <span style="color: red; font-weight: bold;">ReplaceContentBeviljad</span></p>
+                        <p><span style="font-weight:bold">Motivering:</span> ReplaceContentMotivering</p>
                       </td>
-                    </tr>
+                    </tr>               
                   </table>
                 </td>
               </tr>

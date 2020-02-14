@@ -51,8 +51,9 @@
                 <td> @item.Beviljad</td>
                 <td>@item.Motivering</td>
                 <td>
-                    <form action="/Business/Order" method="post">
+                    <form method="post">
                         <button type="submit" formaction="/Admin/Edit/@item.ID" class="btn-info">Edit</button>
+                        <button type="submit" formaction="/Admin/Delete/@item.ID" class="btn-danger">Del</button>
                     </form>
                 </td>
             </tr>         

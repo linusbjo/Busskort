@@ -53,7 +53,7 @@ namespace Busskort.Controllers
             EmailHandler email = new EmailHandler();
 
             client.CreateAnmälan(newAnmälan);
-            email.SendRegisterMail(newAnmälan, "Registering");
+            email.CreateRegistrationEmail("Ansökan om busskort", newAnmälan);
 
             return View("Index");
         }

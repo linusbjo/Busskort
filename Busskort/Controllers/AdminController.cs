@@ -70,19 +70,19 @@ namespace Busskort.Controllers
 
             // Update anmälan
             client.UpdateAnmälan(anmälan);
-            string subject;
+            string Subject;
 
             // Checks if beviljad or not
             if(anmälan.Beviljad.ToLower() == "ja")
             {
-                subject = "Ansökan om busskort - nekat";
+                Subject = "Ansökan om busskort - beviljat";
             }
             else
             {
-                subject = "Ansökan om busskort - beviljat";
+                Subject = "Ansökan om busskort - nekat";
             }
 
-            email.SendMail(anmälan, subject);
+            email.CreateDecisionEmail(Subject, anmälan);
 
             return RedirectToAction("Index");
         }
@@ -90,11 +90,20 @@ namespace Busskort.Controllers
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            BusskortServiceReference.Anmälan anmälan = new BusskortServiceReference.Anmälan();
-            anmälan = GetAnmälanByIDFromService(id);
+            DropdownList dropdown = new DropdownList();
+            ViewBag.DropDownYears = dropdown.GetSelectedValueFromDropDownYear(GetAnmälanByIDFromService(id).Årskurs);
 
-            return View(anmälan);
+            return View(GetAnmälanByIDFromService(id));
         }
+        [HttpPost]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            BusskortServiceReference.Service1Client client = new BusskortServiceReference.Service1Client();
+            client.DeleteAnmälan(id);
+
+            return RedirectToAction("Index");
+        }
+
 
         #region Internal methods
         private BusskortServiceReference.Anmälan GetAnmälanByIDFromService(int id)
@@ -104,7 +113,7 @@ namespace Busskort.Controllers
 
             anmälan = client.GetAnmälan(id);
       
-            return anmälan;
+            return client.GetAnmälan(id);
         }
         private List<BusskortServiceReference.Anmälan> GetAnmälanListFromService()
         {
