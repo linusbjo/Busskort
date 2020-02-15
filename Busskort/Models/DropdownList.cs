@@ -10,7 +10,7 @@ namespace Busskort.Models
     {
         public List<SelectListItem> GetYearDropDown()
         {
-            //Creating generic list
+            // Creating list with values
             List<SelectListItem> dropdownList = new List<SelectListItem>()
             {
                 new SelectListItem { Text = "1", Value = "1" },
@@ -27,8 +27,8 @@ namespace Busskort.Models
             return dropdownList;
         }
 
-        // Used in edit to get selected dropdown value
-        public List<SelectListItem> GetSelectedValueFromDropDownYear(int selectedValueÅrskurs)
+        // Used in Edit and Delete to get selected dropdown value
+        public List<SelectListItem> GetSelectedValueFromDropDownYear(int SelectedValueÅrskurs)
         {
             //Creating generic list
             List<SelectListItem> dropdownList = new List<SelectListItem>();
@@ -38,7 +38,7 @@ namespace Busskort.Models
             foreach (var item in dropdownList)
             {
                 // If value is selected, set true 
-                if(item.Value == selectedValueÅrskurs.ToString())
+                if(item.Value == SelectedValueÅrskurs.ToString())
                 {
                     item.Selected = true; 
                 }

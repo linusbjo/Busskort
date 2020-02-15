@@ -28,6 +28,8 @@ namespace Busskort.Controllers
             BusskortServiceReference.Anmälan anmälan = new BusskortServiceReference.Anmälan();
 
             anmälan = GetAnmälanByIDFromService(id);
+
+            // Send the selected Year value
             ViewBag.DropDownYears = dropdown.GetSelectedValueFromDropDownYear(anmälan.Årskurs);
 
             return View(anmälan);
@@ -85,6 +87,7 @@ namespace Busskort.Controllers
                 Subject = "Ansökan om busskort - nekat";
             }
 
+            // Send subject and object
             email.CreateDecisionEmail(Subject, anmälan);
 
             return RedirectToAction("Index");
@@ -111,40 +114,15 @@ namespace Busskort.Controllers
         #region Internal methods
         private BusskortServiceReference.Anmälan GetAnmälanByIDFromService(int id)
         {
+            // Return anmälan by ID
             BusskortServiceReference.Service1Client client = new BusskortServiceReference.Service1Client();
-
             return client.GetAnmälan(id);
         }
         private List<BusskortServiceReference.Anmälan> GetAnmälanListFromService()
         {
+            // Return the list from the service
             BusskortServiceReference.Service1Client client = new BusskortServiceReference.Service1Client();
-            List<BusskortServiceReference.Anmälan> AnmälanList = new List<BusskortServiceReference.Anmälan>();
-            var temp = client.GetAnmälanList();
-
-            foreach (var item in temp)
-            {
-                BusskortServiceReference.Anmälan tempAnmälan = new BusskortServiceReference.Anmälan();
-                tempAnmälan.ID = item.ID;
-                tempAnmälan.Förnamn = item.Förnamn;
-                tempAnmälan.Efternamn = item.Efternamn;
-                tempAnmälan.barnPersonnummer = item.barnPersonnummer;
-                tempAnmälan.barnFörnamn = item.barnFörnamn;
-                tempAnmälan.barnEfternamn = item.barnEfternamn;
-                tempAnmälan.Adress = item.Adress;
-                tempAnmälan.Postnummer = item.Postnummer;
-                tempAnmälan.E_post = item.E_post;
-                tempAnmälan.Ort = item.Ort;
-                tempAnmälan.Årskurs = item.Årskurs;
-                tempAnmälan.Skola = item.Skola;
-                tempAnmälan.Beviljad = item.Beviljad;
-                tempAnmälan.Motivering = item.Motivering;
-                tempAnmälan.Telefon = item.Telefon;
-                tempAnmälan.FörälderPersonnummer = item.FörälderPersonnummer;
-
-                AnmälanList.Add(tempAnmälan);
-            }
-
-            return AnmälanList;
+            return client.GetAnmälanList().ToList(); 
         }
         #endregion
 

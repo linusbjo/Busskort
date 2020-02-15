@@ -8,6 +8,7 @@
     <script src="~/Custom/Admin/Index.js"></script>
 
 <table class="table table-responsive-sm" id="displayDataTable">
+    <!-- Table headers can sort by ASC or DESC -->
     <thead class="table-dark">
         <tr>
             <th scope="col" onclick="sortTable(0)">#</th>
@@ -30,9 +31,9 @@
         </tr>
     </thead>
     <tbody id="index-tbody">
+        <!--Creates new table-row for each object -->
         @foreach (var item in Model.AnmälanList)
         {
-
             <tr>
                 <td>@item.ID</td>
                 <td>@item.Skola</td>
