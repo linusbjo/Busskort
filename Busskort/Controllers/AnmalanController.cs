@@ -20,6 +20,7 @@ namespace Busskort.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(true)] // Prevent XSS
         public ActionResult Create(FormCollection collection)
         {
             try
