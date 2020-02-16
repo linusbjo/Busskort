@@ -8,6 +8,15 @@ td{
 #displayDataTable th {
     cursor: pointer;
 }
-tr:hover {
-    background-color:floralwhite;
+.index-tbody tr:nth-child(odd):hover td, tbody tr.odd:hover td {
+    background: #8888ff;
+}
+
+.index-tbody tr:nth-child(even):hover td, tbody tr.even:hover td {
+    background: #8888ff;
+}
+
+
+.index-tbody tr:nth-child(odd) td, tbody tr.odd td {
+    background: #CCC;
 }
