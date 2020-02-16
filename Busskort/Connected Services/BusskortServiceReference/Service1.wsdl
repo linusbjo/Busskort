@@ -37,6 +37,12 @@
   <wsdl:message name="IService1_CreateAnmälan_OutputMessage">
     <wsdl:part name="parameters" element="tns:CreateAnmälanResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_CheckUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckUser" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CheckUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckUserResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetAnmälanList">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAnmälanList" message="tns:IService1_GetAnmälanList_InputMessage" />
@@ -57,6 +63,10 @@
     <wsdl:operation name="CreateAnmälan">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/CreateAnmälan" message="tns:IService1_CreateAnmälan_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/CreateAnmälanResponse" message="tns:IService1_CreateAnmälan_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/CheckUser" message="tns:IService1_CheckUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CheckUserResponse" message="tns:IService1_CheckUser_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -99,6 +109,15 @@
     </wsdl:operation>
     <wsdl:operation name="CreateAnmälan">
       <soap:operation soapAction="http://tempuri.org/IService1/CreateAnmälan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckUser">
+      <soap:operation soapAction="http://tempuri.org/IService1/CheckUser" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

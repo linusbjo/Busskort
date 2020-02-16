@@ -70,7 +70,23 @@ namespace BusskortService
 
         public bool CheckUser(string username, string password)
         {
-            return true;
+            bool returnValue; 
+
+            using (AnmalanEntityDataModel db = new AnmalanEntityDataModel())
+            {
+                var obj = db.UserProfile.Where(a => a.UserName.Equals(username) && a.Password.Equals(password)).FirstOrDefault();
+
+                if (obj != null)
+                {
+                    returnValue = false;
+                }
+                else
+                {
+                    returnValue = true;
+                }
+            }
+
+            return returnValue;
         }
     }
 }
