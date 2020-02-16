@@ -78,11 +78,11 @@ namespace BusskortService
 
                 if (obj != null)
                 {
-                    returnValue = false;
+                    returnValue = true;
                 }
                 else
                 {
-                    returnValue = true;
+                    returnValue = false;
                 }
             }
 

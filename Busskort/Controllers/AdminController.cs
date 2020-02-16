@@ -10,12 +10,33 @@ namespace Busskort.Controllers
 {
     public class AdminController : Controller
     {
+
         public ActionResult Login()
-        {
+        {     
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(UserProfile user)
+        {
+
+            BusskortServiceReference.Service1Client client = new BusskortServiceReference.Service1Client();
+
+            if(client.CheckUser(user.UserName, user.Password))
+            {
+                Session["ValidUser"] = user.UserName;
+                return RedirectToAction("Index", "Admin");               
+            }
+
+            return RedirectToAction("Login", "Admin");
         }
         public ActionResult Index()
         {
+            if (Session["ValidUser"] == null)
+            {
+                return RedirectToAction("Login");
+            }
+
             BusskortViewModel model = new BusskortViewModel();
             model.AnmälanList = GetAnmälanListFromService();
 
@@ -24,6 +45,11 @@ namespace Busskort.Controllers
         [HttpPost]
         public ActionResult Edit(int id)
         {
+            if (Session["ValidUser"] == null)
+            {
+                return RedirectToAction("Login");
+            }
+
             DropdownList dropdown = new DropdownList();
             BusskortServiceReference.Anmälan anmälan = new BusskortServiceReference.Anmälan();
 
@@ -40,6 +66,11 @@ namespace Busskort.Controllers
         [ValidateInput(true)]
         public ActionResult EditConfirmed(FormCollection collection)
         {
+            if (Session["ValidUser"] == null)
+            {
+                return RedirectToAction("Login");
+            }
+
             BusskortServiceReference.Anmälan anmälan = new BusskortServiceReference.Anmälan();
             BusskortServiceReference.Service1Client client = new BusskortServiceReference.Service1Client();
             EmailHandler email = new EmailHandler();
@@ -96,6 +127,11 @@ namespace Busskort.Controllers
         [HttpPost]
         public ActionResult Delete(int id)
         {
+            if (Session["ValidUser"] == null)
+            {
+                return RedirectToAction("Login");
+            }
+
             DropdownList dropdown = new DropdownList();
             ViewBag.DropDownYears = dropdown.GetSelectedValueFromDropDownYear(GetAnmälanByIDFromService(id).Årskurs);
 
