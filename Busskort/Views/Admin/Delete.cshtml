@@ -71,10 +71,7 @@
                 <h3 class="formlabel" style="font-family: sans-serif">Åtgärd</h3><br />
 
                 <label for="exampleFormControlSelect1"><b>Beviljad</b></label>
-                <select class="form-control" id="exampleFormControlSelect1" name="beviljad" readonly disabled>
-                    <option>Ja</option>
-                    <option>Nej</option>
-                </select>
+                @Html.DropDownList("Beviljad", (IEnumerable<SelectListItem>)ViewBag.DropDownBeviljad, new { id = "exampleFormControlSelect2", @class = "form-control",@disabled = "disabled"  })
 
                 <label for="inputSkola"><b>Motivering</b></label>
                 <textarea class="form-control" id="motivering" placeholder="Skriv motivering..." name="motiveringName" style="height:150px" readonly>@Model.Motivering</textarea>
