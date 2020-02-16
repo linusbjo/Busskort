@@ -15,8 +15,9 @@ namespace BusskortService
         public List<Anmälan> GetAnmälanList()
         {
             AnmalanEntityDataModel db = new AnmalanEntityDataModel();
-
-            return db.Anmälan.ToList();
+            List<Anmälan> AnmälanList = new List<Anmälan>();
+            AnmälanList = db.Anmälan.ToList();
+            return AnmälanList;
         }
 
         public Anmälan GetAnmälan(int id)
@@ -55,23 +56,37 @@ namespace BusskortService
             UpdateAnmälan.Telefon = anmälan.Telefon;
             UpdateAnmälan.E_post = anmälan.E_post;
             UpdateAnmälan.FörälderPersonnummer = anmälan.FörälderPersonnummer;
+            UpdateAnmälan.Motivering = anmälan.Motivering;
 
             db.SaveChanges();
 
         }
         public void CreateAnmälan(Anmälan anmälan)
         {
-            try
-            {
                 AnmalanEntityDataModel db = new AnmalanEntityDataModel();
                 db.Anmälan.Add(anmälan);
                 db.SaveChanges();
-            }
-            catch (Exception e)
+        }
+
+        public bool CheckUser(string username, string password)
+        {
+            bool returnValue; 
+
+            using (AnmalanEntityDataModel db = new AnmalanEntityDataModel())
             {
+                var obj = db.UserProfile.Where(a => a.UserName.Equals(username) && a.Password.Equals(password)).FirstOrDefault();
 
+                if (obj != null)
+                {
+                    returnValue = true;
+                }
+                else
+                {
+                    returnValue = false;
+                }
             }
 
+            return returnValue;
         }
     }
 }

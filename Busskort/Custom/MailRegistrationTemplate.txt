@@ -336,7 +336,7 @@
     </style>
   </head>
   <body class="">
-    <span class="preheader">This is preheader text. Some clients will show this text as a preview.</span>
+    <span class="preheader">Du har skapat en ansökan för ett busskort.</span>
     <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
       <tr>
         <td>&nbsp;</td>
@@ -352,26 +352,16 @@
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                     <tr>
                       <td>
-                        <p>Hello there</p>
-                        <p>You have now registerd to a new school.</p>
-                        <p>We will review your request as soon as we can! You will be notified by email when a decision has been made.</p>
-                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
-                          <tbody>
-                            <tr>
-                              <td align="left">
-                                <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-                                  <tbody>
-                                    <tr>
-                                      <td> <a href="http://htmlemail.io" target="_blank">Call To Action</a> </td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                        <p>This is a really simple email template. Its sole purpose is to get the recipient to click the button with no distractions.</p>
-                        <p>Good luck! Hope it works.</p>
+                        <p>Hej!</p>
+                        <p>Du har skapat en ansökan om busskort för ditt barn.</p>
+                        <p>Vi kommer att gå igenom ärendet så snart vi kan och du kommer få svar via ditt mail.</p>
+                        
+                        <br/>
+                          <p><span style="font-weight:bold">Skola som du har ansökt:</span> ReplaceContentSkola</p>
+                          <p><span style="font-weight:bold">Barnet som du har ansökt om:</span> ReplaceContentBarnNamn</p>
+                          <p><span style="font-weight:bold">Ansvarig vårdnadshavare:</span> ReplaceContentCaretaker</p>
+                        <br/>
+
                       </td>
                     </tr>
                   </table>
@@ -387,13 +377,9 @@
               <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                 <tr>
                   <td class="content-block">
-                    <span class="apple-link">Thn, Sverige</span>
-                    <br> Don't like these emails? <a href="http://i.imgur.com/CScmqnj.gif">Unsubscribe</a>.
-                  </td>
-                </tr>
-                <tr>
-                  <td class="content-block powered-by">
-                    Powered by <a href="http://htmlemail.io">HTMLemail</a>.
+                    <span class="apple-link">Trollhättan, Sverige</span>
+                    <br/>
+                    <br> Svara inte på detta mail för frågor. Detta är ett autogenererat mail.
                   </td>
                 </tr>
               </table>

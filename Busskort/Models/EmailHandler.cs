@@ -9,63 +9,88 @@ namespace Busskort.Models
 {
     public class EmailHandler
     {
-        private static string FromAdress = "@gmail.com", Password = "lösenord", FromName = "Anmälan Service";
+        private string FromAdress = "@gmail.com", Password = "lösenord", FromName = "Anmälan Busskort", BodyText;
 
-        public void SendRegisterMail(string ToMailAdress, string Subject)
+
+        // Auto generated when user submits a form
+        public void CreateRegistrationEmail(string Subject, BusskortServiceReference.Anmälan anmälan)
         {
-
-            string text;
-            string filePath = (AppDomain.CurrentDomain.BaseDirectory + "Custom/MailTemplate.txt");
-            var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
-            using (var streamReader = new StreamReader(fileStream, System.Text.Encoding.UTF8))
-            {
-                text = streamReader.ReadToEnd();
-            }
-
             try
             {
-                MailMessage mail = new MailMessage();
-                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+                string line;
+                string filePath = (AppDomain.CurrentDomain.BaseDirectory + "Custom/MailRegistrationTemplate.txt");
+                var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
 
-                mail.From = new MailAddress(FromAdress, FromName);
-                mail.To.Add(ToMailAdress);
-                mail.Subject = Subject;
-                mail.Body = text;
-                mail.IsBodyHtml = true;
+                StreamReader file = new StreamReader(filePath);
+                while ((line = file.ReadLine()) != null)
+                {
+                    BodyText += line;
+                }
+                file.Close();
 
-                SmtpServer.Port = 587;
-                SmtpServer.Credentials = new System.Net.NetworkCredential(FromAdress, Password);
-                SmtpServer.EnableSsl = true;
+                BodyText = BodyText.Replace("ReplaceContentSkola", anmälan.Skola);
+                BodyText = BodyText.Replace("ReplaceContentBarnNamn", anmälan.barnFörnamn + " " + anmälan.barnEfternamn);
+                BodyText = BodyText.Replace("ReplaceContentCaretaker", anmälan.Förnamn + " " + anmälan.Efternamn);
 
-                SmtpServer.Send(mail);
+                SendEmail(Subject, anmälan.E_post);
             }
-            catch (Exception ex)
+            catch
             {
 
             }
         }
 
-        //TODO: Lägg till message i mail
-        public void SendMail(string ToMailAdress, string Subject, string message)
+        // Auto generated when decision has been made by admin
+        public void CreateDecisionEmail(string Subject, BusskortServiceReference.Anmälan anmälan)
         {
-
-            string text;
-            string filePath = (AppDomain.CurrentDomain.BaseDirectory + "Custom/MailTemplate.txt");
-            var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
-            using (var streamReader = new StreamReader(fileStream, System.Text.Encoding.UTF8))
+            try
             {
-                text = streamReader.ReadToEnd();
-            }
+                string line;
+                string filePath = (AppDomain.CurrentDomain.BaseDirectory + "Custom/MailDecisionTemplate.txt");
+                var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
 
+                StreamReader file = new StreamReader(filePath);
+                while ((line = file.ReadLine()) != null)
+                {
+                    BodyText += line;
+                }
+                file.Close();
+
+                BodyText = BodyText.Replace("ReplaceContentSkola", anmälan.Skola);
+                BodyText = BodyText.Replace("ReplaceContentBarnNamn", anmälan.barnFörnamn + " " + anmälan.barnEfternamn);
+                BodyText = BodyText.Replace("ReplaceContentCaretaker", anmälan.Förnamn + " " + anmälan.Efternamn);
+
+                if (anmälan.Beviljad.ToLower() == "ja")
+                {
+                    BodyText = BodyText.Replace("ReplaceContentBeviljad", "<span style =\"color: green; font - weight: bold; \">" + anmälan.Beviljad + "</span>");
+                }
+                else
+                {
+                    BodyText = BodyText.Replace("ReplaceContentBeviljad", "<span style =\"color: red; font - weight: bold; \">" + anmälan.Beviljad + "</span>");
+                }
+
+                BodyText = BodyText.Replace("ReplaceContentMotivering", anmälan.Motivering);
+
+                SendEmail(Subject, anmälan.E_post);
+            }
+            catch
+            {
+
+            }
+        }
+
+        // Send the email
+        private void SendEmail(string Subject, string ToEmailAdress)
+        {
             try
             {
                 MailMessage mail = new MailMessage();
                 SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
 
                 mail.From = new MailAddress(FromAdress, FromName);
-                mail.To.Add(ToMailAdress);
+                mail.To.Add(ToEmailAdress);
                 mail.Subject = Subject;
-                mail.Body = text;
+                mail.Body = BodyText;
                 mail.IsBodyHtml = true;
 
                 SmtpServer.Port = 587;
@@ -74,7 +99,7 @@ namespace Busskort.Models
 
                 SmtpServer.Send(mail);
             }
-            catch (Exception ex)
+            catch
             {
 
             }

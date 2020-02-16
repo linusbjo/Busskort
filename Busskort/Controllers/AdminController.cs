@@ -10,13 +10,32 @@ namespace Busskort.Controllers
 {
     public class AdminController : Controller
     {
+        BusskortServiceReference.Service1Client client = new BusskortServiceReference.Service1Client();
+
         public ActionResult Login()
-        {
+        {     
             return View();
         }
+
+        [HttpPost]
+        public ActionResult Login(UserProfile user)
+        {
+            if(client.CheckUser(user.UserName, user.Password))
+            {
+                Session["ValidUser"] = user.UserName;
+                return RedirectToAction("Index", "Admin");               
+            }
+
+            return RedirectToAction("Login", "Admin");
+        }
         public ActionResult Index()
-        {            
-            BusskortViewModel model = new BusskortViewModel();                  
+        {
+            if (Session["ValidUser"] == null)
+            {
+                return RedirectToAction("Login");
+            }
+
+            BusskortViewModel model = new BusskortViewModel();
             model.AnmälanList = GetAnmälanListFromService();
 
             return View(model);
@@ -24,21 +43,36 @@ namespace Busskort.Controllers
         [HttpPost]
         public ActionResult Edit(int id)
         {
-            Anmälan anmälan = new Anmälan();
+            if (Session["ValidUser"] == null)
+            {
+                return RedirectToAction("Login");
+            }
+
+       
+            BusskortServiceReference.Anmälan anmälan = new BusskortServiceReference.Anmälan();
+
             anmälan = GetAnmälanByIDFromService(id);
+
+            CreateDropDowns(anmälan, true);
 
             return View(anmälan);
         }
 
         // When edit is submit
         [HttpPost]
+        [ValidateInput(true)] // use against XSS
         public ActionResult EditConfirmed(FormCollection collection)
         {
+            if (Session["ValidUser"] == null)
+            {
+                return RedirectToAction("Login");
+            }
+
             BusskortServiceReference.Anmälan anmälan = new BusskortServiceReference.Anmälan();
-            BusskortServiceReference.Service1Client client = new BusskortServiceReference.Service1Client();
             EmailHandler email = new EmailHandler();
 
-            //TODO: ändra names
+            anmälan.ID = Convert.ToInt32(collection["ID"]);
+
             // Skola och årskurs
             anmälan.Årskurs = Convert.ToInt32(collection["year"]);
             anmälan.Skola = Convert.ToString(collection["skolaNamn"]);
@@ -68,88 +102,75 @@ namespace Busskort.Controllers
 
             // Update anmälan
             client.UpdateAnmälan(anmälan);
-            string subject;
+            string Subject;
 
-            // Checks if beviljad or not
+            // Checks if denied or not
             if(anmälan.Beviljad.ToLower() == "ja")
             {
-                subject = "Ansökan om busskort - nekat";
+                Subject = "Ansökan om busskort - beviljat";
             }
             else
             {
-                subject = "Ansökan om busskort - beviljat";
+                Subject = "Ansökan om busskort - nekat";
             }
 
-            email.SendMail(anmälan.E_post, subject, anmälan.Motivering);
+            // Send subject and object
+            email.CreateDecisionEmail(Subject, anmälan);
+
+            return RedirectToAction("Index");
+        }
+        
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            if (Session["ValidUser"] == null)
+            {
+                return RedirectToAction("Login");
+            }
+
+            BusskortServiceReference.Anmälan anmälan = new BusskortServiceReference.Anmälan();
+            anmälan = GetAnmälanByIDFromService(id);
+
+            CreateDropDowns(anmälan, true);
+           
+            return View(anmälan);
+        }
+        [HttpPost]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            client.DeleteAnmälan(id);
 
             return RedirectToAction("Index");
         }
 
-        public ActionResult Delete()
-        {
-            Anmälan anmälan = new Anmälan();
-            anmälan = GetAnmälanByIDFromService(4);
-
-            return View(anmälan);
-        }
 
         #region Internal methods
-        private Anmälan GetAnmälanByIDFromService(int id)
+        private BusskortServiceReference.Anmälan GetAnmälanByIDFromService(int id)
         {
-            BusskortServiceReference.Service1Client client = new BusskortServiceReference.Service1Client();
-            Anmälan anmälan = new Anmälan();
-
-            var tempAnmälan = client.GetAnmälan(id);
-
-            anmälan.ID = tempAnmälan.ID;
-            anmälan.Förnamn = tempAnmälan.Förnamn;
-            anmälan.Efternamn = tempAnmälan.Efternamn;
-            anmälan.barnPersonnummer = tempAnmälan.barnPersonnummer;
-            anmälan.FörälderPersonnummer = tempAnmälan.FörälderPersonnummer;
-            anmälan.barnFörnamn = tempAnmälan.barnFörnamn;
-            anmälan.barnEfternamn = tempAnmälan.barnEfternamn;
-            anmälan.Adress = tempAnmälan.Adress;
-            anmälan.Postnummer = tempAnmälan.Postnummer;
-            anmälan.E_post = tempAnmälan.E_post;
-            anmälan.Ort = tempAnmälan.Ort;
-            anmälan.Årskurs = tempAnmälan.Årskurs;
-            anmälan.Skola = tempAnmälan.Skola;
-            anmälan.Beviljad = tempAnmälan.Beviljad;
-            anmälan.Motivering = tempAnmälan.Motivering;
-            anmälan.Telefon = tempAnmälan.Telefon;
-
-            return anmälan;
+            // Return anmälan by ID
+            return client.GetAnmälan(id);
         }
-        private List<Anmälan> GetAnmälanListFromService()
+        private List<BusskortServiceReference.Anmälan> GetAnmälanListFromService()
         {
-            BusskortServiceReference.Service1Client client = new BusskortServiceReference.Service1Client();
-            List<Anmälan> AnmälanList = new List<Anmälan>();
-            var temp = client.GetAnmälanList();
+            // Return the list from the service
+            return client.GetAnmälanList().ToList(); 
+        }
+        private void CreateDropDowns(BusskortServiceReference.Anmälan anmälan, bool GetSelectedValue)
+        {
+            DropdownList dropdown = new DropdownList();
+            if (GetSelectedValue)
+            {              
+                ViewBag.DropDownYears = dropdown.GetSelectedValueFromDropDownYear(anmälan.Årskurs); // Årskurs always has a value, Beviljad does not
 
-            foreach (var item in temp)
-            {
-                Anmälan tempAnmälan = new Anmälan();
-                tempAnmälan.ID = item.ID;
-                tempAnmälan.Förnamn = item.Förnamn;
-                tempAnmälan.Efternamn = item.Efternamn;
-                tempAnmälan.barnPersonnummer = item.barnPersonnummer;
-                tempAnmälan.barnFörnamn = item.barnFörnamn;
-                tempAnmälan.barnEfternamn = item.barnEfternamn;
-                tempAnmälan.Adress = item.Adress;
-                tempAnmälan.Postnummer = item.Postnummer;
-                tempAnmälan.E_post = item.E_post;
-                tempAnmälan.Ort = item.Ort;
-                tempAnmälan.Årskurs = item.Årskurs;
-                tempAnmälan.Skola = item.Skola;
-                tempAnmälan.Beviljad = item.Beviljad;
-                tempAnmälan.Motivering = item.Motivering;
-                tempAnmälan.Telefon = item.Telefon;
-                tempAnmälan.FörälderPersonnummer = item.FörälderPersonnummer;
-
-                AnmälanList.Add(tempAnmälan);
+                if (anmälan.Beviljad != null)
+                {
+                    ViewBag.DropDownBeviljad = dropdown.GetSelectedValueFromBeviljadDropDown(anmälan.Beviljad);
+                }
+                else
+                {
+                    ViewBag.DropDownBeviljad = dropdown.GetBeviljadDropDown();
+                }
             }
-
-            return AnmälanList;
         }
         #endregion
 

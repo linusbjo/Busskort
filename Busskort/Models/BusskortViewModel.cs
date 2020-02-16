@@ -7,7 +7,7 @@ namespace Busskort.Models
 {
     public class BusskortViewModel
     {
-        public List<Anmälan> AnmälanList { get; set; }
+        public List<BusskortServiceReference.Anmälan> AnmälanList { get; set; }
         public Anmälan anmälan { get; set; }
     }
 }

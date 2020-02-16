@@ -5,20 +5,21 @@
     <script src="~/Scripts/popper.js"></script>
     <script src="~/Scripts/bootstrap.js"></script>
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Custom/Anmälan/Index.css" rel="stylesheet" />
     <link href="~/Custom/MasterPage/MasterPage.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width" />
     <title>Ansökan om busskort</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">Busskort</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    @Html.ActionLink("Ansökan", "Index", "Anmalan", null, new { @class = "nav-link" })
+                    @Html.ActionLink("Ansök", "Index", "Anmalan", null, new { @class = "nav-link" })
                 </li>
                 <li class="nav-item">
                     @Html.ActionLink("Admin", "Index", "Admin", null, new { @class = "nav-link" })
@@ -30,11 +31,11 @@
     <div>
         @RenderBody()
     </div>
-<footer class="footer">
+@*<footer class="footer">
     <div>
         <p>Datum: <span id="datetime"></span></p>
     </div>
-</footer>
+</footer>*@
 <script>
     var dt = new Date();
     document.getElementById("datetime").innerHTML = dt.toLocaleDateString();
