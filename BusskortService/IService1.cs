@@ -26,5 +26,8 @@ namespace BusskortService
 
         [OperationContract]
         void CreateAnmälan(Anmälan anmälan);
+
+        [OperationContract]
+        bool CheckUser(string username, string password);
     }
 }

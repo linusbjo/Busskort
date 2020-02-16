@@ -67,5 +67,10 @@ namespace BusskortService
                 db.Anmälan.Add(anmälan);
                 db.SaveChanges();
         }
+
+        public bool CheckUser(string username, string password)
+        {
+            return true;
+        }
     }
 }
