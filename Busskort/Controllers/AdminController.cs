@@ -10,6 +10,7 @@ namespace Busskort.Controllers
 {
     public class AdminController : Controller
     {
+        BusskortServiceReference.Service1Client client = new BusskortServiceReference.Service1Client();
 
         public ActionResult Login()
         {     
@@ -19,9 +20,6 @@ namespace Busskort.Controllers
         [HttpPost]
         public ActionResult Login(UserProfile user)
         {
-
-            BusskortServiceReference.Service1Client client = new BusskortServiceReference.Service1Client();
-
             if(client.CheckUser(user.UserName, user.Password))
             {
                 Session["ValidUser"] = user.UserName;
@@ -50,20 +48,19 @@ namespace Busskort.Controllers
                 return RedirectToAction("Login");
             }
 
-            DropdownList dropdown = new DropdownList();
+       
             BusskortServiceReference.Anmälan anmälan = new BusskortServiceReference.Anmälan();
 
             anmälan = GetAnmälanByIDFromService(id);
 
-            // Send the selected Year value
-            ViewBag.DropDownYears = dropdown.GetSelectedValueFromDropDownYear(anmälan.Årskurs);
+            CreateDropDowns(anmälan, true);
 
             return View(anmälan);
         }
 
         // When edit is submit
         [HttpPost]
-        [ValidateInput(true)]
+        [ValidateInput(true)] // use against XSS
         public ActionResult EditConfirmed(FormCollection collection)
         {
             if (Session["ValidUser"] == null)
@@ -72,7 +69,6 @@ namespace Busskort.Controllers
             }
 
             BusskortServiceReference.Anmälan anmälan = new BusskortServiceReference.Anmälan();
-            BusskortServiceReference.Service1Client client = new BusskortServiceReference.Service1Client();
             EmailHandler email = new EmailHandler();
 
             anmälan.ID = Convert.ToInt32(collection["ID"]);
@@ -132,15 +128,16 @@ namespace Busskort.Controllers
                 return RedirectToAction("Login");
             }
 
-            DropdownList dropdown = new DropdownList();
-            ViewBag.DropDownYears = dropdown.GetSelectedValueFromDropDownYear(GetAnmälanByIDFromService(id).Årskurs);
+            BusskortServiceReference.Anmälan anmälan = new BusskortServiceReference.Anmälan();
+            anmälan = GetAnmälanByIDFromService(id);
 
-            return View(GetAnmälanByIDFromService(id));
+            CreateDropDowns(anmälan, true);
+           
+            return View(anmälan);
         }
         [HttpPost]
         public ActionResult DeleteConfirmed(int id)
         {
-            BusskortServiceReference.Service1Client client = new BusskortServiceReference.Service1Client();
             client.DeleteAnmälan(id);
 
             return RedirectToAction("Index");
@@ -151,14 +148,29 @@ namespace Busskort.Controllers
         private BusskortServiceReference.Anmälan GetAnmälanByIDFromService(int id)
         {
             // Return anmälan by ID
-            BusskortServiceReference.Service1Client client = new BusskortServiceReference.Service1Client();
             return client.GetAnmälan(id);
         }
         private List<BusskortServiceReference.Anmälan> GetAnmälanListFromService()
         {
             // Return the list from the service
-            BusskortServiceReference.Service1Client client = new BusskortServiceReference.Service1Client();
             return client.GetAnmälanList().ToList(); 
+        }
+        private void CreateDropDowns(BusskortServiceReference.Anmälan anmälan, bool GetSelectedValue)
+        {
+            DropdownList dropdown = new DropdownList();
+            if (GetSelectedValue)
+            {              
+                ViewBag.DropDownYears = dropdown.GetSelectedValueFromDropDownYear(anmälan.Årskurs); // Årskurs always has a value, Beviljad does not
+
+                if (anmälan.Beviljad != null)
+                {
+                    ViewBag.DropDownBeviljad = dropdown.GetSelectedValueFromBeviljadDropDown(anmälan.Beviljad);
+                }
+                else
+                {
+                    ViewBag.DropDownBeviljad = dropdown.GetBeviljadDropDown();
+                }
+            }
         }
         #endregion
 

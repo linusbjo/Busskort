@@ -27,6 +27,20 @@ namespace Busskort.Models
             return dropdownList;
         }
 
+        // Create beviljad dropdown
+        public List<SelectListItem> GetBeviljadDropDown()
+        {
+            // Creating list with values
+            List<SelectListItem> dropdownList = new List<SelectListItem>()
+            {
+                 new SelectListItem { Text = "N/A", Value = "N/A" },
+                new SelectListItem { Text = "Ja", Value = "Ja" },
+                new SelectListItem { Text = "Nej", Value = "Nej" }
+            };
+
+            return dropdownList;
+        }
+
         // Used in Edit and Delete to get selected dropdown value
         public List<SelectListItem> GetSelectedValueFromDropDownYear(int SelectedValueÅrskurs)
         {
@@ -41,6 +55,25 @@ namespace Busskort.Models
                 if(item.Value == SelectedValueÅrskurs.ToString())
                 {
                     item.Selected = true; 
+                }
+            }
+            return dropdownList;
+        }
+
+        // Used in Edit and Delete to get selected dropdown value
+        public List<SelectListItem> GetSelectedValueFromBeviljadDropDown(string SelectedValueBeviljad)
+        {
+            //Creating generic list
+            List<SelectListItem> dropdownList = new List<SelectListItem>();
+            dropdownList = GetBeviljadDropDown();
+
+            // Loop each item until selected value is found
+            foreach (var item in dropdownList)
+            {
+                // If value is selected, set true 
+                if (item.Value == SelectedValueBeviljad.ToString())
+                {
+                    item.Selected = true;
                 }
             }
             return dropdownList;
