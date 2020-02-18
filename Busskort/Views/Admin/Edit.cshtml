@@ -8,70 +8,16 @@
 
 
 
-<div>
-        
-    <div class="container">
-        <h1 class="pagetitle" font-family: sans-serif">Edit</h1>
-        <h6 font-family: sans-serif">Anmälan ID: @Model.ID</h6>
-        <br />
+    <div>
         @using (Html.BeginForm("EditConfirmed", "Admin", FormMethod.Post))
         {
-        <div class="form-row">
+        <div class="container">
+            <h1 class="pagetitle" font-family: sans-serif">Edit</h1>
+            <h6 font-family: sans-serif">Anmälan ID: @Model.ID</h6>
+            <br />
 
-            @Html.HiddenFor(m => m.ID)
 
-            <div class="form-group col-md-6">
-                <h3 class="formlabel" style="font-family: sans-serif">Skola</h3><br />
-
-                <label for="exampleFormControlSelect1"><b>Årskurs</b></label>
-                @Html.DropDownList("year", (IEnumerable<SelectListItem>)ViewBag.DropDownYears, new { id = "exampleFormControlSelect1", @class = "form-control", @disabled = "disabled"})
-
-                <label for="inputSkola"><b>Skola</b></label>
-                <input type="text" class="form-control" value="@Model.Skola" id="inputSkola" name="skolaNamn" readonly>
-            </div>
-
-            <div class="form-group col-md-6">
-                <h3 class="formlabel" style="font-family: sans-serif">Barn</h3><br />
-                <label for="inputB_Personnummer"><b>Personnummer</b></label>
-                <input type="text" class="form-control" value="@Model.barnPersonnummer" id="inputB_Personnummer" placeholder="ÅÅMMDD-XXXX" name="barnPersonnummer" readonly>
-                <label for="inputB_fornamn"><b>Förnamn</b></label>
-                <input type="text" class="form-control" value="@Model.barnFörnamn" id="inputB_fornamn" placeholder="Förnamn" name="barnFörnamn" readonly>
-                <label for="inputB_efternamn"><b>Efternamn</b></label>
-                <input type="text" class="form-control" value="@Model.barnEfternamn" id="inputB_efternamn" placeholder="Efternamn" name="barnEfternamn" readonly>
-            </div>
-
-            <div class="form-group col-md-6">
-                <h3 class="formlabel" style="font-family: sans-serif">Målsman</h3><br />
-                <label for="inputM_Personnummer"><b>Personnummer</b></label>
-                <input type="text" class="form-control" value="@Model.FörälderPersonnummer" id="inputF_Personnummer" placeholder="ÅÅMMDD-XXXX" name="FörälderPersonnummer" readonly>
-                <label for="inputM_fornamn"><b>Förnamn</b></label>
-                <input type="text" class="form-control" value="@Model.Förnamn" id="inputM_fornamn" placeholder="Förnamn" name="Förnamn" readonly>
-                <label for="inputM_efternamn"><b>Efternamn</b></label>
-                <input type="text" class="form-control" value="@Model.Efternamn" id="inputM_efternamn" placeholder="Efternamn" name="Efternamn" readonly>
-            </div>
-
-            <div class="form-group col-md-6">
-                <h3 class="formlabel" style="font-family: sans-serif">Kontakt</h3><br />
-
-                <label for="inputEmail"><b>E-post</b></label>
-                <input type="email" class="form-control" value="@Model.E_post" id="inputEmail" placeholder="E-post" name="E_post" readonly>
-                <label for="inputTelefon"><b>Telefon</b></label>
-                <input type="text" class="form-control" value="@Model.Telefon" id="inputTelefon" placeholder="Telefonnummer" name="inputTelefon" readonly>
-            </div>
-
-            <div class="form-group col-md-6">
-                <h3 class="formlabel" style="font-family: sans-serif">Adress</h3><br />
-
-                <label for="inputAdress"><b>Adress</b></label>
-                <input type="text" class="form-control" value="@Model.Adress" id="inputAdress" placeholder="Gatunamn t.ex. Mjölnaregatan 16" name="Adress" readonly>
-                <label for="inputPostnummer"><b>Postnummer</b></label>
-                <input type="text" class="form-control" value="@Model.Postnummer" id="inputPostnummer" placeholder="Postnummer" name="Postnummer" readonly>
-                <label for="inputOrt"><b>Ort</b></label>
-                <input type="text" class="form-control" value="@Model.Ort" id="inputOrt" placeholder="Ort" name="Ort" readonly>
-
-            </div>
-        </div>
-
+            @Html.Partial("_AdminAnmalanPart")
 
             <div class="form-row">
 
@@ -89,8 +35,9 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Skicka</button>
+
+        </div>
         }
     </div>
-</div>
 <br />
 <br />
