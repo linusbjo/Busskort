@@ -110,7 +110,9 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Custom\Admin\Index.css" />
     <Content Include="Custom\Admin\Index.js" />
-    <Content Include="Custom\MailTemplate.txt" />
+    <Content Include="Custom\Anmälan\Index.css" />
+    <Content Include="Custom\MailDecisionTemplate.txt" />
+    <Content Include="Custom\MailRegistrationTemplate.txt" />
     <Content Include="Custom\MasterPage\MasterPage.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -238,7 +240,9 @@
     </Compile>
     <Compile Include="Models\Anmälan.cs" />
     <Compile Include="Models\BusskortViewModel.cs" />
+    <Compile Include="Models\DropdownList.cs" />
     <Compile Include="Models\EmailHandler.cs" />
+    <Compile Include="Models\UserProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -261,6 +265,7 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\Edit.cshtml" />
     <Content Include="Views\Admin\Delete.cshtml" />
+    <Content Include="Views\Admin\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

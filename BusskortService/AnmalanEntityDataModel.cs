@@ -13,6 +13,7 @@
         }
 
         public virtual DbSet<Anmälan> Anmälan { get; set; }
+        public virtual DbSet<UserProfile> UserProfile { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -54,6 +55,14 @@
 
             modelBuilder.Entity<Anmälan>()
                 .Property(e => e.Motivering)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<UserProfile>()
+                .Property(e => e.UserName)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<UserProfile>()
+                .Property(e => e.Password)
                 .IsUnicode(false);
         }
     }

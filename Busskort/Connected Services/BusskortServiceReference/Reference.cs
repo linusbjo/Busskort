@@ -331,6 +331,12 @@ namespace Busskort.BusskortServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CreateAnmälan", ReplyAction="http://tempuri.org/IService1/CreateAnmälanResponse")]
         System.Threading.Tasks.Task CreateAnmälanAsync(Busskort.BusskortServiceReference.Anmälan anmälan);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CheckUser", ReplyAction="http://tempuri.org/IService1/CheckUserResponse")]
+        bool CheckUser(string username, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CheckUser", ReplyAction="http://tempuri.org/IService1/CheckUserResponse")]
+        System.Threading.Tasks.Task<bool> CheckUserAsync(string username, string password);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -398,6 +404,14 @@ namespace Busskort.BusskortServiceReference {
         
         public System.Threading.Tasks.Task CreateAnmälanAsync(Busskort.BusskortServiceReference.Anmälan anmälan) {
             return base.Channel.CreateAnmälanAsync(anmälan);
+        }
+        
+        public bool CheckUser(string username, string password) {
+            return base.Channel.CheckUser(username, password);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CheckUserAsync(string username, string password) {
+            return base.Channel.CheckUserAsync(username, password);
         }
     }
 }
